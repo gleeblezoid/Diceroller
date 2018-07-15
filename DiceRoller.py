@@ -12,10 +12,6 @@
 # Menu for choosing dice roller #
 #################################
 
-import os
-
-cwd = os.getcwd()
-
 print("\nChoose your preferred option from the menu below by typing a number\n")
 print("1: Standard polyhedral dice")
 print("2: Exploding polyhedral dice")
