@@ -13,9 +13,8 @@
 #################################
 
 import os
-from pathlib import Path
 
-cwd = Path("").resolve().parent
+cwd = os.getcwd()
 
 print("\nChoose your preferred option from the menu below by typing a number\n")
 print("1: Standard polyhedral dice")
@@ -26,8 +25,7 @@ menu_choice = input("What roller would you like to use?")
 if menu_choice == "q":
     exit(0)
 elif menu_choice == '1':
-    exec(open("/Users/usearle/PycharmProjects/bish-bash-bosh/DiceRoller/PolyhedralRoller.py").read())
+    import PolyhedralRoller
 elif menu_choice == '2':
-#    exec(open("Exploding Dice.py").read())
-     exec(open(os.path.join(Path.cwd(),"Exploding Dice.py")))
+     import ExplodingDice
 
