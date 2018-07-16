@@ -23,5 +23,5 @@ if menu_choice == "q":
 elif menu_choice == '1':
     import PolyhedralRoller
 elif menu_choice == '2':
-     import ExplodingDice
+    import ExplodingDice
 
