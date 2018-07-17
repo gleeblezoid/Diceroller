@@ -11,7 +11,9 @@ i = 0
 while i < (pool):
     roll = random.randint(1, sides)
     if roll < sides : i = i + 1
-    elif roll == random.randint(1, sides) : i = i + 1
+    elif roll == sides:
+            random.randint(1, sides)
+            i = i
     print(roll, end=",")
 print("\n")
 
