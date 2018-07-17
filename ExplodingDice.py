@@ -5,7 +5,14 @@ type = input("What are you rolling for?")
 pool = int(input("How many dice are you rolling?"))
 sides = int(input("How many sides are on each die?"))
 
-#Explode once
+if sides <= 1:
+    print("Nice try")
+    exit(0)
+
+if pool < 1:
+    print("Silly human")
+    exit(0)
+
 print(type)
 i = 0
 while i < (pool):
