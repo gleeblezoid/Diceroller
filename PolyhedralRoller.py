@@ -5,7 +5,7 @@ type = input("What are you rolling for?")
 pool = int(input("How many dice are you rolling?"))
 sides = int(input("How many sides are on each die?"))
 
-
+# Error handling
 if sides < 1:
     print("Wow, just wow...")
     exit(0)
@@ -14,6 +14,7 @@ if pool < 1:
     print("Silly human")
     exit(0)
 
+# Dice roll resolution
 print(type)
 i = 0
 while i < (pool):
