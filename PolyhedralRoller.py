@@ -22,3 +22,7 @@ while i < (pool):
     i = i + 1
     print(roll, end=",")
 print("\n")
+
+# Go back to main menu
+
+import DiceRoller
