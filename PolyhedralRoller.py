@@ -1,3 +1,7 @@
+#################################################
+# Rolls a set of custom defined polyhedral dice #
+#################################################
+
 import random
 
 # Define why you're rolling, how many dice, and how many sides on the dice

@@ -1,3 +1,7 @@
+###################################
+# Rolls repeatedly exploding dice #
+###################################
+
 import random
 
 # Define why you're rolling, how many dice, and how many sides on the dice
@@ -29,4 +33,5 @@ while i < (pool):
 print("\n")
 
 # Go back to main menu
+
 import DiceRoller
