@@ -12,11 +12,11 @@ sides = int(input("How many sides are on each die?"))
 # Error handling
 if sides < 1:
     print("Wow, just wow...")
-    exit(0)
+    import PolyhedralRoller
 
 if pool < 1:
     print("Silly human")
-    exit(0)
+    import PolyhedralRoller
 
 # Dice roll resolution
 print(type)

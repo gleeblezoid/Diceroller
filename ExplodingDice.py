@@ -13,11 +13,11 @@ sides = int(input("How many sides are on each die?"))
 
 if sides <= 1:
     print("Nice try")
-    exit(0)
+    import ExplodingDice
 
 if pool < 1:
     print("Silly human")
-    exit(0)
+    import ExplodingDice
 
 # Dice roll resolution
 
