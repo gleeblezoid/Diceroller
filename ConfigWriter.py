@@ -11,6 +11,12 @@ rpgsystem = input("What RPG system are you using?")
 sides = int(input("How many sides do your dice have?"))
 explode = input("Do your dice explode? Type either Yes or No")
 
-# Error handling
 
-if explode !=
+config = open((rpgsystem + ".py"),'w')
+config.write("rpgsystem = " + rpgsystem + "\n")
+config.write("sides = " + str(sides) + "\n")
+config.write("explode = " + explode + "\n")
+
+rpglist = open(("rpglist.py"),'w')
+rpglist.write(rpgsystem + "\n")
+# Need a way to save configs for specific roleplay systems
