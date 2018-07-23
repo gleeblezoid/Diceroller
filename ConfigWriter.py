@@ -13,7 +13,7 @@ sides = int(input("How many sides do your dice have?"))
 explode = input("Do your dice explode? Type either Yes or No")
 
 
-config = open((rpgsystem + ".py"),'w')
+config = open((str.strip(rpgsystem) + ".py"),'w')
 config.write("rpgsystem = " + rpgsystem + "\n")
 config.write("sides = " + str(sides) + "\n")
 config.write("explode = " + explode + "\n")
@@ -23,7 +23,7 @@ rpglist.write("print(\"" + rpgshortcode +": " + rpgsystem + "\")" + "\n")
 
 rpgmenu = open(("rpgmenu.py"), 'w')
 
-rpgmenu.write("if")
+rpgmenu.write("if menu_choice == \'" + rpgshortcode + "\'\n" + "      import " + str.strip(rpgsystem))
 
 # Need a way to save configs for specific roleplay systems
 
