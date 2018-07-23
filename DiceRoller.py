@@ -12,11 +12,12 @@
 # Menu for choosing dice roller #
 #################################
 
-print("\nChoose your preferred option from the menu below by typing a number\n")
+print("\nChoose your preferred option from the menu below by typing the shortcode or number for the option\n")
 print("1: Standard polyhedral dice")
 print("2: Exploding polyhedral dice")
+print("3: RPG System Menu")
 print("q: Quit")
-menu_choice = input("What roller would you like to use?")
+menu_choice = input("Please enter your choice:")
 
 if menu_choice == "q":
     exit(0)
@@ -25,3 +26,15 @@ elif menu_choice == '1':
 elif menu_choice == '2':
     import ExplodingDice
 
+# Option 3 section starts here
+# The "option 3" section open up into the customisable RPG Menu section of the program
+elif menu_choice == '3':
+    print("Welcome to the RPG menu: Choose your preferred option by typing the shortcode or number")
+    print("q: Return to main menu")
+    import rpglist
+    menu_choice = input("Please enter your choice:")
+    if menu_choice == "q:":
+        import DiceRoller
+    import rpgmenu
+
+# Option 3 ends here
