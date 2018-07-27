@@ -10,10 +10,10 @@ print("Welcome to the dice roller customizer. "
 rpgsystem = input("What RPG system are you using?")
 rpgshortcode = input("What shortcode do you want to use for this RPG system?")
 sides = int(input("How many sides do your dice have?"))
-explode = input("Do your dice explode? Type either Yes or No")
+explode = input("Do your dice explode? Type either Y or N")
 
 
-config = open((str.strip(rpgsystem) + ".py"),'w')
+config = open(str("".join(rpgsystem.split()) + ".py"),'w')
 config.write("rpgsystem = " + rpgsystem + "\n")
 config.write("sides = " + str(sides) + "\n")
 config.write("explode = " + explode + "\n")
@@ -23,10 +23,6 @@ rpglist.write("print(\"" + rpgshortcode +": " + rpgsystem + "\")" + "\n")
 
 rpgmenu = open(("rpgmenu.py"), 'w')
 
-rpgmenu.write("if menu_choice == \'" + rpgshortcode + "\'\n" + "      import " + str.strip(rpgsystem))
+rpgmenu.write("if menu_choice == \'" + rpgshortcode + "\':\n" + "      import " + "".join(rpgsystem.split()))
 
 # Need a way to save configs for specific roleplay systems
-
-#print("q: Quit to main menu")
-#if menu_choice == "q":
-#    import DiceRoller
