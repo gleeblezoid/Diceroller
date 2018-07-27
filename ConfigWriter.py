@@ -12,17 +12,17 @@ rpgshortcode = input("What shortcode do you want to use for this RPG system?")
 sides = int(input("How many sides do your dice have?"))
 explode = input("Do your dice explode? Type either Y or N")
 
-
-config = open(str("".join(rpgsystem.split()) + ".py"),'w')
+rpgfile = str("rpg"+"".join(rpgsystem.split()) + ".py")
+config = open(rpgfile,'w')
 config.write("rpgsystem = " + rpgsystem + "\n")
 config.write("sides = " + str(sides) + "\n")
 config.write("explode = " + explode + "\n")
 
-rpglist = open(("rpglist.py"),'w')
-rpglist.write("print(\"" + rpgshortcode +": " + rpgsystem + "\")" + "\n")
+rpglist = open(("rpglist.py"),'a')
+rpglist.write("\n"+"print(\"" + rpgshortcode +": " + rpgsystem + "\")" + "\n")
 
-rpgmenu = open(("rpgmenu.py"), 'w')
+rpgmenu = open(("rpgmenu.py"),'a')
 
-rpgmenu.write("if menu_choice == \'" + rpgshortcode + "\':\n" + "      import " + "".join(rpgsystem.split()))
+rpgmenu.write("\n"+"if menu_choice == \'" + rpgshortcode + "\':\n" + "      exec(open(\"./" + rpgfile + "\").read())")
 
 # Need a way to save configs for specific roleplay systems
