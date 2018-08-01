@@ -27,14 +27,8 @@ elif menu_choice == '2':
     import ExplodingDice
 
 # Option 3 section starts here
-# The "option 3" section open up into the customisable RPG Menu section of the program
+# The "option 3" section opens up into the customisable RPG Menu section of the program
 elif menu_choice == '3':
-    print("Welcome to the RPG menu: Choose your preferred option by typing the shortcode or number")
-    print("q: Return to main menu")
-    import rpglist
-    menu_choice = input("Please enter your choice:")
-    if menu_choice == "q:":
-        import DiceRoller
     import rpgmenu
 
 # Option 3 ends here

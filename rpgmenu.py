@@ -4,3 +4,4 @@ import rpglist
 menu_choice = input("Please enter your choice:")
 if menu_choice == "q":
     import DiceRoller
+
