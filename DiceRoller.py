@@ -22,9 +22,11 @@ menu_choice = input("Please enter your choice:")
 if menu_choice == "q":
     exit(0)
 elif menu_choice == '1':
-    import PolyhedralRoller
+    exec(open("./oneoffinput.py").read())
+    exec(open("./PolyhedralRoller.py").read())
 elif menu_choice == '2':
-    import ExplodingDice
+    exec(open("./oneoffinput.py").read())
+    exec(open("./ExplodingDice.py").read())
 
 # Option 3 section starts here
 # The "option 3" section opens up into the customisable RPG Menu section of the program
