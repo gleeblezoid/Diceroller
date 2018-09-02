@@ -32,9 +32,9 @@ elif menu_choice == '2':
 # Option 3 section starts here
 # The "option 3" section opens up into the customised RPG Menu section of the program
 elif menu_choice == '3':
-    import rpgmenu
+    exec(open("./rpgmenu.py").read())
 
 # Option 3 ends here
 
 elif menu_choice == '4':
-    import ConfigWriter
+    exec(open("./ConfigWriter.py").read())

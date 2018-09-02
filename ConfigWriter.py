@@ -3,7 +3,7 @@
 # Config files provide custom defined variables for the dice rollers  #
 #######################################################################
 # What are your variables?
-import pickle
+
 print("Welcome to the dice roller customizer. "
       "This works best for systems which use pools of dice.")
 rpgsystem = input("What RPG system are you using?")
@@ -31,4 +31,5 @@ codeslist.write("\n" + rpgshortcode + "\n")
 
 # Need a way to save configs for specific roleplay systems
 print("Thanks - back to the Main Menu")
-exec(open("./Diceroller.py").read())
+
+exec(open("./DiceRoller.py").read())
