@@ -16,6 +16,7 @@ print("\nChoose your preferred option from the menu below by typing the shortcod
 print("1: Standard polyhedral dice")
 print("2: Exploding polyhedral dice")
 print("3: RPG System Menu")
+print("4: RPG Config Writer")
 print("q: Quit")
 menu_choice = input("Please enter your choice:")
 
@@ -29,8 +30,11 @@ elif menu_choice == '2':
     exec(open("./ExplodingDice.py").read())
 
 # Option 3 section starts here
-# The "option 3" section opens up into the customisable RPG Menu section of the program
+# The "option 3" section opens up into the customised RPG Menu section of the program
 elif menu_choice == '3':
     import rpgmenu
 
 # Option 3 ends here
+
+elif menu_choice == '4':
+    import ConfigWriter
