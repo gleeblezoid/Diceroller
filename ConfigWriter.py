@@ -2,8 +2,6 @@
 # Provides framework to create and set up a config file               #
 # Config files provide custom defined variables for the dice rollers  #
 #######################################################################
-import pickle
-
 # What are your variables?
 
 print("Welcome to the dice roller customizer. "
@@ -28,7 +26,7 @@ rpglist.write("\n"+"print(\"" + rpgshortcode +": " + rpgsystem + "\")" + "\n")
 
 # This generates a usable entry from the RPG menu which pulls in the correct RPG parameters file
 
-rpgcodes=[]
+from rpgcodes.pkl import rpgcodes
 rpgcodes.append(rpgshortcode)
 print(rpgcodes)
 rpglist = open("rpgcodes.pkl",'wb')
