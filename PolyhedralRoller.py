@@ -14,7 +14,6 @@ if pool < 1:
     import PolyhedralRoller
 
 # Dice roll resolution
-print(type)
 i = 0
 while i < (pool):
     roll = random.randint(1, sides)

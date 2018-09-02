@@ -14,9 +14,9 @@ explode = input("Do your dice explode? Type either Y or N")
 # This creates a file containing the parameters for your chosen RPG System
 rpgfile = str("rpg"+"".join(rpgshortcode.split()) + ".py")
 config = open(rpgfile,'w')
-config.write("rpgsystem = " + rpgsystem + "\n")
+config.write("rpgsystem = \"" + rpgsystem + "\"\n")
 config.write("sides = " + str(sides) + "\n")
-config.write("explode = " + explode + "\n")
+config.write("explode = \"" + explode + "\"\n")
 config.write("pool = int(input(\"How many dice are you rolling?\"))")
 
 
@@ -27,7 +27,7 @@ rpglist.write("\n"+"print(\"" + rpgshortcode +": " + rpgsystem + "\")" + "\n")
 # This generates a usable entry from the RPG menu which pulls in the correct RPG parameters file
 
 codeslist = open("rpgcodes.py",'a')
-codeslist.write(rpgshortcode + "\n")
+codeslist.write("\n" + rpgshortcode + "\n")
 
 # Need a way to save configs for specific roleplay systems
 print("Thanks - back to the Main Menu")

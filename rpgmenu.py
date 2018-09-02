@@ -12,6 +12,10 @@ else:
 if menu_choice in shortcodes[:]:
     rpgfile = "./rpg" + menu_choice + ".py"
     exec(open(rpgfile).read())
+    if explode == "Y":
+        exec(open("./ExplodingDice.py").read())
+    elif explode == "N":
+        exec(open("./PolyhedralRoller.py").read())
 else:
     print("Sorry I don't have that RPG")
 
