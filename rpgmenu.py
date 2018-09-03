@@ -11,7 +11,7 @@ try:
             shortcodes = [line.strip() for line in codes]
 
     if menu_choice in shortcodes[:]:
-        rpgfile = "./rpg" + menu_choice + ".py"
+        rpgfile = "./rpgsys" + menu_choice + ".py"
         exec(open(rpgfile).read())
         if explode == "Y":
             exec(open("./ExplodingDice.py").read())

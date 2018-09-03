@@ -8,11 +8,31 @@ print("Welcome to the dice roller customizer. "
       "This works best for systems which use pools of dice.")
 rpgsystem = input("What RPG system are you using?")
 rpgshortcode = input("What shortcode do you want to use for this RPG system?")
-sides = int(input("How many sides do your dice have?"))
-explode = input("Do your dice explode? Type either Y or N")
+
+
+while True:
+      try:
+            sides = int(input("How many sides do your dice have?"))
+            if sides <= 1:
+                raise ValueError
+            break
+      except ValueError:
+          print("Nope - try something else \n")
+while True:
+    try:
+        explode = input("Do your dice explode? Type either Y or N:")
+        if explode == "Y":
+            break
+        elif explode == "N":
+            break
+        else:
+            raise ValueError
+            break
+    except ValueError:
+        print("Nope - try something else - like an uppercase Y or N \n")
 
 # This creates a file containing the parameters for your chosen RPG System
-rpgfile = str("rpg"+"".join(rpgshortcode.split()) + ".py")
+rpgfile = str("rpgsys"+"".join(rpgshortcode.split()) + ".py")
 config = open(rpgfile,'w')
 config.write("rpgsystem = \"" + rpgsystem + "\"\n")
 config.write("sides = " + str(sides) + "\n")
