@@ -17,6 +17,7 @@ print("1: Standard polyhedral dice")
 print("2: Exploding polyhedral dice")
 print("3: RPG System Menu")
 print("4: RPG Config Writer")
+print("5: Roll single D20")
 print("q: Quit")
 menu_choice = input("Please enter your choice:")
 
@@ -29,12 +30,17 @@ elif menu_choice == '2':
     exec(open("./oneoffinput.py").read())
     exec(open("./ExplodingDice.py").read())
 
-# Option 3 section starts here
+
 # The "option 3" section opens up into the customised RPG Menu section of the program
 elif menu_choice == '3':
     exec(open("./rpgmenu.py").read())
 
-# Option 3 ends here
+# Option 4 allows you to add more RPG systems
 
 elif menu_choice == '4':
     exec(open("./ConfigWriter.py").read())
+
+elif menu_choice == '5':
+    pool = 1
+    sides = 20
+    exec(open("./PolyhedralRoller.py").read())
