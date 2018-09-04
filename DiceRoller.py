@@ -5,6 +5,7 @@
 # Currently only allows a single type of polyhedral in a given pool
 # Do not yet have a means of defining non-numeric dice
 # No logging function yet
+# Allow removal of RPG systems as well as addition
 
 #################################
 # Menu for choosing dice roller #
