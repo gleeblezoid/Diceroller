@@ -32,7 +32,7 @@ while True:
         print("Nope - try something else - like an uppercase Y or N \n")
 
 # This creates a file containing the parameters for your chosen RPG System
-rpgfile = str("rpgsys"+"".join(rpgshortcode.split()) + ".py")
+rpgfile = str("rpgsysfiles/rpgsys"+"".join(rpgshortcode.split()) + ".py")
 config = open(rpgfile,'w')
 config.write("rpgsystem = \"" + rpgsystem + "\"\n")
 config.write("sides = " + str(sides) + "\n")

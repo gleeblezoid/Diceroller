@@ -3,9 +3,7 @@
 ############################
 
 # Currently only allows a single type of polyhedral in a given pool
-# Does not yet allow you to save your settings (for specific systems)
 # Do not yet have a means of defining non-numeric dice
-# No initial config options to be saved for using in a campaign
 # No logging function yet
 
 #################################
