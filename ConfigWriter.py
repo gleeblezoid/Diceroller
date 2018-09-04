@@ -11,7 +11,7 @@ print("Welcome to the dice roller customizer. "
       "\n2: Remove RPG System")
 try:
     mode = int(input("Enter the number for your choice:"))
-except ValueError, NameError:
+except(ValueError, NameError):
     print("Nope - try something else\n")
     exec(open("./DiceRoller.py").read())
 
