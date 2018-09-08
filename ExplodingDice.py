@@ -3,7 +3,6 @@
 ###################################
 
 import random
-
 try:
 # Error handling
 

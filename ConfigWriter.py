@@ -44,7 +44,7 @@ if mode == 1:
     # This creates a dictionary entry containing the parameters for your chosen RPG System
     exec(open("./RPGDictionary.py").read())
     rpgsystems[rpgshortcode] = {}
-    rpgsystems[rpgshortcode]['name'] = rpgsystem
+    rpgsystems[rpgshortcode]['name'] = rpgshortcode + ":" + rpgsystem
     rpgsystems[rpgshortcode]['sides'] = sides
     rpgsystems[rpgshortcode]['explodes'] = explode
 

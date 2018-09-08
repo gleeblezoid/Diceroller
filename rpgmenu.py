@@ -2,21 +2,21 @@ print("Welcome to the RPG menu: Choose your preferred option by typing the short
 print("q: Return to main menu")
 
 try:
-    exec(open("./rpgnames.py").read())
+    exec(open("./RPGDictionary.py").read())
+    rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
+    print(rpgnames)
     menu_choice = input("Please enter your choice:")
     if menu_choice == "q":
         exec(open("./Diceroller.py").read())
-    else:
-        with open('rpgcodes.py', 'r') as codes:
-            shortcodes = [line.strip() for line in codes]
+    elif menu_choice in rpgsystems:
+            sides = rpgsystems[menu_choice]['sides']
+            explode = rpgsystems[menu_choice]['explodes']
+            pool = int(input("How many dice would you like to roll?"))
 
-    if menu_choice in shortcodes[:]:
-        rpgfile = "./rpgsysfiles/rpgsys" + menu_choice + ".py"
-        exec(open(rpgfile).read())
-        if explode == "Y":
-            exec(open("./ExplodingDice.py").read())
-        elif explode == "N":
-            exec(open("./PolyhedralRoller.py").read())
+            if explode == 'Y':
+                    exec(open('./ExplodingDice.py').read())
+            elif explode == 'N':
+                    exec(open('./PolyhedralRoller.py').read())
     else:
         print("Sorry I don't have that RPG")
 
@@ -24,5 +24,5 @@ try:
 
 except (NameError, TypeError, ValueError):
 
-    print("Sorry, try something else!")
+    print("Sorry, try something else please!")
     exec(open("./DiceRoller.py").read())
