@@ -41,27 +41,19 @@ if mode == 1:
         except ValueError:
             print("Nope - try something else - like an uppercase Y or N \n")
 
-    # This creates a file containing the parameters for your chosen RPG System
-    rpgfile = str("rpgsysfiles/rpgsys"+"".join(rpgshortcode.split()) + ".py")
-    config = open(rpgfile,'w')
-    config.write("rpgsystem = \"" + rpgsystem + "\"\n")
-    config.write("rpgcode = "+rpgshortcode + "\n")
-    config.write("sides = " + str(sides) + "\n")
-    config.write("explode = \"" + explode + "\"\n")
-    config.write("pool = int(input(\"How many dice are you rolling?\"))")
+    # This creates a dictionary entry containing the parameters for your chosen RPG System
+    exec(open("./RPGDictionary.py").read())
+    rpgsystems[rpgshortcode] = {}
+    rpgsystems[rpgshortcode]['name'] = rpgsystem
+    rpgsystems[rpgshortcode]['sides'] = sides
+    rpgsystems[rpgshortcode]['explodes'] = explode
 
-
-    # This generates a menu entry for RPG selection via DiceRoller
-    rpglist = open(("rpgnames.py"),'a')
-    rpglist.write("\n"+"print(\"" + rpgshortcode +": " + rpgsystem + "\")" + "\n")
-
-    # This generates a usable entry from the RPG menu which pulls in the correct RPG parameters file
-
-    codeslist = open("rpgcodes.py",'a')
-    codeslist.write("\n" + rpgshortcode + "\n")
+    # Remove an RPG system
 elif mode == 2:
     print("Do the removal process")
     print("Which RPG system would you like to remove?")
+
+
 # Need a way to save configs for specific roleplay systems
 print("Thanks - back to the Main Menu")
 
