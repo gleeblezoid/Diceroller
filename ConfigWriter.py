@@ -42,11 +42,16 @@ if mode == 1:
             print("Nope - try something else - like an uppercase Y or N \n")
 
     # This creates a dictionary entry containing the parameters for your chosen RPG System
+
     exec(open("./RPGDictionary.py").read())
     rpgsystems[rpgshortcode] = {}
     rpgsystems[rpgshortcode]['name'] = rpgshortcode + ":" + rpgsystem
     rpgsystems[rpgshortcode]['sides'] = sides
     rpgsystems[rpgshortcode]['explodes'] = explode
+    dictionary = "rpgsystems ="+str(rpgsystems)
+    rpglist = open(r'RPGDictionary.py','w+')
+    rpglist.write(str(dictionary))
+    rpglist.close()
 
     # Remove an RPG system
 elif mode == 2:
