@@ -45,6 +45,7 @@ if mode == 1:
     rpgfile = str("rpgsysfiles/rpgsys"+"".join(rpgshortcode.split()) + ".py")
     config = open(rpgfile,'w')
     config.write("rpgsystem = \"" + rpgsystem + "\"\n")
+    config.write("rpgcode = "+rpgshortcode + "\n")
     config.write("sides = " + str(sides) + "\n")
     config.write("explode = \"" + explode + "\"\n")
     config.write("pool = int(input(\"How many dice are you rolling?\"))")
@@ -60,6 +61,7 @@ if mode == 1:
     codeslist.write("\n" + rpgshortcode + "\n")
 elif mode == 2:
     print("Do the removal process")
+    print("Which RPG system would you like to remove?")
 # Need a way to save configs for specific roleplay systems
 print("Thanks - back to the Main Menu")
 
