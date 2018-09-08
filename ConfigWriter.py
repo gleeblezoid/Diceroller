@@ -15,6 +15,10 @@ except(ValueError, NameError):
     print("Nope - try something else\n")
     exec(open("./DiceRoller.py").read())
 
+# Import dictionary for rpgsystems
+exec(open("./RPGDictionary.py").read())
+
+# Add an RPG System
 if mode == 1:
     rpgsystem = input("What RPG system are you using?")
     rpgshortcode = input("What shortcode do you want to use for this RPG system?")
@@ -43,7 +47,6 @@ if mode == 1:
 
     # This creates a dictionary entry containing the parameters for your chosen RPG System
 
-    exec(open("./RPGDictionary.py").read())
     rpgsystems[rpgshortcode] = {}
     rpgsystems[rpgshortcode]['name'] = rpgshortcode + ":" + rpgsystem
     rpgsystems[rpgshortcode]['sides'] = sides
@@ -53,13 +56,24 @@ if mode == 1:
     rpglist.write(str(dictionary))
     rpglist.close()
 
+    print("Thanks - back to the Main Menu")
+
     # Remove an RPG system
 elif mode == 2:
-    print("Do the removal process")
-    print("Which RPG system would you like to remove?")
+
+    rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
+    print(rpgnames)
+    menu_choice = input("Which RPG system would you like to remove?")
+    if menu_choice in rpgsystems:
+        del rpgsystems[menu_choice]
+        dictionary = "rpgsystems =" + str(rpgsystems)
+        rpglist = open(r'RPGDictionary.py', 'w+')
+        rpglist.write(str(dictionary))
+        rpglist.close()
+    else:
+        print("Sorry - please try something else!")
 
 
 # Need a way to save configs for specific roleplay systems
-print("Thanks - back to the Main Menu")
 
 exec(open("./DiceRoller.py").read())
