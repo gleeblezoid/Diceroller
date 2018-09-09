@@ -3,7 +3,7 @@
 #################################################
 
 import random
-import subprocess
+
 try:
 # Error handling
     if sides < 1:
