@@ -5,11 +5,12 @@
 # Currently only allows a single type of polyhedral in a given pool
 # Do not yet have a means of defining non-numeric dice
 # No logging function yet
-# Allow removal of RPG systems as well as addition
 
 #################################
 # Menu for choosing dice roller #
 #################################
+
+from pathlib import Path
 
 print("\nChoose your preferred option from the menu below by typing the shortcode or number for the option\n")
 
@@ -28,30 +29,30 @@ elif menu_choice == '1':
     print("Welcome to the RPG menu: Choose your preferred option by typing the shortcode or number")
     print("q: Return to main menu")
     try:
-        exec(open("./RPGDictionary.py").read())
+        exec(Path('./RPGDictionary.py').open('r').read())
         rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
         print(rpgnames)
         menu_choice = input("Please enter your choice:")
         if menu_choice == "q":
-            exec(open("./Diceroller.py").read())
+            exec(Path('./Diceroller.py').open('r').read())
         elif menu_choice in rpgsystems:
             sides = rpgsystems[menu_choice]['sides']
             explode = rpgsystems[menu_choice]['explodes']
             pool = int(input("How many dice would you like to roll?"))
 
             if explode == 'Y':
-                exec(open('./ExplodingDice.py').read())
+                exec(Path('./ExplodingDice.py').open('r').read())
             elif explode == 'N':
-                exec(open('./PolyhedralRoller.py').read())
+                exec(Path('./PolyhedralRoller.py').open('r').read())
         else:
             print("Sorry I don't have that RPG")
 
-        exec(open("./Diceroller.py").read())
+            exec(Path('./Diceroller.py').open('r').read())
 
     except (NameError, TypeError, ValueError):
 
         print("Sorry, try something else please!")
-        exec(open("./DiceRoller.py").read())
+        exec(Path('./Diceroller.py').open('r').read())
 
 elif menu_choice == '2':
 
@@ -70,10 +71,10 @@ elif menu_choice == '2':
         mode = int(input("Enter the number for your choice:"))
     except(ValueError, NameError):
         print("Nope - try something else\n")
-        exec(open("./DiceRoller.py").read())
+        exec(Path('./Diceroller.py').open('r').read())
 
     # Import dictionary for rpgsystems
-    exec(open("./RPGDictionary.py").read())
+        exec(Path('./RPGDictionary.py').open('r').read())
 
     # Add an RPG System
     if mode == 1:
@@ -131,19 +132,19 @@ elif menu_choice == '2':
 
     # Need a way to save configs for specific roleplay systems
 
-    exec(open("./DiceRoller.py").read())
+        exec(Path('./Diceroller.py').open('r').read())
 
 elif menu_choice == '3':
     pool = 1
     sides = 20
-    exec(open("./PolyhedralRoller.py").read())
+    exec(Path('./PolyhedralRoller.py').open('r').read())
 
 elif menu_choice == '4':
     pool = int(input("How many dice are you rolling?"))
     sides = int(input("How many sides are on each die?"))
-    exec(open("./PolyhedralRoller.py").read())
+    exec(Path('./PolyhedralRoller.py').open('r').read())
 
 elif menu_choice == '5':
     pool = int(input("How many dice are you rolling?"))
     sides = int(input("How many sides are on each die?"))
-    exec(open("./ExplodingDice.py").read())
+    exec(Path('./ExplodingDice.py').open('r').read())
