@@ -28,9 +28,9 @@ try:
 
 # Go back to main menu
 
-    exec(open("./DiceRoller.py").read())
+    exec(Path('./Diceroller.py').open('r').read())
 
 except (NameError, TypeError, ValueError):
 
     print("Sorry, try something else!")
-    exec(open("./DiceRoller.py").read())
+    exec(Path('./Diceroller.py').open('r').read())
