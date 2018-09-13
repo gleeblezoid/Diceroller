@@ -1,10 +1,4 @@
-############################
-# Future plans/patch notes #
-############################
 
-# Currently only allows a single type of polyhedral in a given pool
-# Do not yet have a means of defining non-numeric dice
-# No logging function yet
 
 #################################
 # Menu for choosing dice roller #
@@ -19,6 +13,7 @@ print("2: Add a saved RPG System")
 print("3: Roll single D20")
 print("4: Standard polyhedral dice")
 print("5: Exploding polyhedral dice")
+print("6: Roll FATE dice")
 print("q: Quit")
 menu_choice = input("Please enter your choice:")
 
@@ -148,3 +143,7 @@ elif menu_choice == '5':
     pool = int(input("How many dice are you rolling?"))
     sides = int(input("How many sides are on each die?"))
     exec(Path('./ExplodingDice.py').open('r').read())
+
+elif menu_choice == '6':
+    pool = int(input("How many dice are you rolling?"))
+    exec(Path('./FateRoller.py').open('r').read())
