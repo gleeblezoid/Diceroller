@@ -5,34 +5,37 @@
 import random
 from pathlib import Path
 
-try:
-# Error handling
+rollagain = "Y"
+while str.upper(rollagain)=="Y":
+    try:
+    # Error handling
 
-    if sides <= 1:
-        print("Nice try")
-        import ExplodingDice
+        if sides <= 1:
+            print("Nice try")
+            import ExplodingDice
 
-    if pool < 1:
-        print("Silly human")
-        import ExplodingDice
+        if pool < 1:
+            print("Silly human")
+            import ExplodingDice
 
-# Dice roll resolution
-    i = 0
-    while i < (pool):
-        roll = random.randint(1, sides)
-        if roll < sides:
-            i = i + 1
-        elif roll == sides:
-            random.randint(1, sides)
-            i = i
-        print(roll, end=",")
-    print("\n")
+    # Dice roll resolution
+        i = 0
+        while i < (pool):
+            roll = random.randint(1, sides)
+            if roll < sides:
+                i = i + 1
+            elif roll == sides:
+                random.randint(1, sides)
+                i = i
+            print(roll, end=",")
+        print("\n")
+        rollagain=input("Do you want to roll the same again? Enter Y or N:")
 
-# Go back to main menu
+    except (NameError, TypeError, ValueError):
 
-    exec(Path('./Diceroller.py').open('r').read())
+        print("Sorry, try something else!")
+        exec(Path('./Diceroller.py').open('r').read())
+else:
+        # Go back to main menu
 
-except (NameError, TypeError, ValueError):
-
-    print("Sorry, try something else!")
     exec(Path('./Diceroller.py').open('r').read())

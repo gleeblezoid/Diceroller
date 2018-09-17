@@ -1,15 +1,13 @@
-
-
-#################################
-# Menu for choosing dice roller #
-#################################
+###############################################
+# Main Dice Roller File - including main menu #
+###############################################
 
 from pathlib import Path
 
 print("\nChoose your preferred option from the menu below by typing the shortcode or number for the option\n")
 
 print("1: Use a saved RPG System")
-print("2: Add a saved RPG System")
+print("2: Add/Remove a saved RPG System")
 print("3: Roll single D20")
 print("4: Standard polyhedral dice")
 print("5: Exploding polyhedral dice")
@@ -23,6 +21,8 @@ if menu_choice == "q":
 elif menu_choice == '1':
     print("Welcome to the RPG menu: Choose your preferred option by typing the shortcode or number")
     print("q: Return to main menu")
+    rollagain = "Y"
+    # Set up a while loop for rolling again within an RPG system
     try:
         exec(Path('./RPGDictionary.py').open('r').read())
         rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
@@ -62,14 +62,13 @@ elif menu_choice == '2':
           "\n Please choose whether you want to add or remove an RPG system"
           "\n1: Add RPG System"
           "\n2: Remove RPG System")
+    # Import dictionary for rpgsystems
+    exec(Path('./RPGDictionary.py').open('r').read())
     try:
         mode = int(input("Enter the number for your choice:"))
     except(ValueError, NameError):
         print("Nope - try something else\n")
         exec(Path('./Diceroller.py').open('r').read())
-
-    # Import dictionary for rpgsystems
-        exec(Path('./RPGDictionary.py').open('r').read())
 
     # Add an RPG System
     if mode == 1:
@@ -87,22 +86,22 @@ elif menu_choice == '2':
         while True:
             try:
                 explode = input("Do your dice explode? Type either Y or N:")
-                if explode == "Y":
+                if str.upper(explode) == "Y":
                     break
-                elif explode == "N":
+                elif str.upper(explode) == "N":
                     break
                 else:
                     raise ValueError
                     break
             except ValueError:
-                print("Nope - try something else - like an uppercase Y or N \n")
+                print("Nope - try something else - like a Y or N \n")
 
         # This creates a dictionary entry containing the parameters for your chosen RPG System
 
         rpgsystems[rpgshortcode] = {}
         rpgsystems[rpgshortcode]['name'] = rpgshortcode + ":" + rpgsystem
         rpgsystems[rpgshortcode]['sides'] = sides
-        rpgsystems[rpgshortcode]['explodes'] = explode
+        rpgsystems[rpgshortcode]['explodes'] = str.upper(explode)
         dictionary = "rpgsystems =" + str(rpgsystems)
         rpglist = open(r'RPGDictionary.py', 'w+')
         rpglist.write(str(dictionary))
@@ -125,23 +124,27 @@ elif menu_choice == '2':
         else:
             print("Sorry - please try something else!")
 
-    # Need a way to save configs for specific roleplay systems
+    exec(Path('./Diceroller.py').open('r').read())
 
-        exec(Path('./Diceroller.py').open('r').read())
+# Set up while loops for rerolls
 
 elif menu_choice == '3':
-    pool = 1
-    sides = 20
-    exec(Path('./PolyhedralRoller.py').open('r').read())
+    rollagain = "Y"
+    while rollagain == "Y":
+        pool = 1
+        sides = 20
+        exec(Path('./PolyhedralRoller.py').open('r').read())
 
 elif menu_choice == '4':
-    pool = int(input("How many dice are you rolling?"))
-    sides = int(input("How many sides are on each die?"))
+    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die)")
+    pool = int(dice[:dice.find('d')])
+    sides = int(dice[dice.find('d') + 1:])
     exec(Path('./PolyhedralRoller.py').open('r').read())
 
 elif menu_choice == '5':
-    pool = int(input("How many dice are you rolling?"))
-    sides = int(input("How many sides are on each die?"))
+    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die)")
+    pool = int(dice[:dice.find('d')])
+    sides = int(dice[dice.find('d') + 1:])
     exec(Path('./ExplodingDice.py').open('r').read())
 
 elif menu_choice == '6':
