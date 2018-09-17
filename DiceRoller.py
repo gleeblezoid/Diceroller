@@ -129,9 +129,11 @@ elif menu_choice == '2':
 # Set up while loops for rerolls
 
 elif menu_choice == '3':
-    pool = 1
-    sides = 20
-    exec(Path('./PolyhedralRoller.py').open('r').read())
+    rollagain = "Y"
+    while rollagain == "Y":
+        pool = 1
+        sides = 20
+        exec(Path('./PolyhedralRoller.py').open('r').read())
 
 elif menu_choice == '4':
     dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die)")
