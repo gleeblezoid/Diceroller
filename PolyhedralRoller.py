@@ -24,7 +24,7 @@ while str.upper(rollagain)=="Y":
             i = i + 1
             print(roll, end=",")
         print("\n")
-        rollagain=input("Do you want to roll again? Enter Y or N:")
+        rollagain=input("Do you want to roll the same again? Enter Y or N:")
     except (NameError, TypeError, ValueError):
         print("Sorry, try something else!")
         exec(Path('./Diceroller.py').open('r').read())
