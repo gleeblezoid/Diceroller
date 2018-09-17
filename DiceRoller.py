@@ -1,8 +1,6 @@
-
-
-#################################
-# Menu for choosing dice roller #
-#################################
+###############################################
+# Main Dice Roller File - including main menu #
+###############################################
 
 from pathlib import Path
 
@@ -23,6 +21,8 @@ if menu_choice == "q":
 elif menu_choice == '1':
     print("Welcome to the RPG menu: Choose your preferred option by typing the shortcode or number")
     print("q: Return to main menu")
+    rollagain = "Y"
+    # Set up a while loop for rolling again within an RPG system
     try:
         exec(Path('./RPGDictionary.py').open('r').read())
         rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
@@ -62,7 +62,7 @@ elif menu_choice == '2':
           "\n Please choose whether you want to add or remove an RPG system"
           "\n1: Add RPG System"
           "\n2: Remove RPG System")
-    #Import dictionary for rpgsystems
+    # Import dictionary for rpgsystems
     exec(Path('./RPGDictionary.py').open('r').read())
     try:
         mode = int(input("Enter the number for your choice:"))
@@ -124,9 +124,9 @@ elif menu_choice == '2':
         else:
             print("Sorry - please try something else!")
 
-    # Need a way to save configs for specific roleplay systems
-
     exec(Path('./Diceroller.py').open('r').read())
+
+# Set up while loops for rerolls
 
 elif menu_choice == '3':
     pool = 1

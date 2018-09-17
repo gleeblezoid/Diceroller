@@ -24,10 +24,9 @@ try:
     print("\n")
 
 # Go back to main menu
-
     exec(Path('./Diceroller.py').open('r').read())
 
 except (NameError, TypeError, ValueError):
 
-    print("Sorry, try something else!")
-    exec(Path('./Diceroller.py').open('r').read())
+        print("Sorry, try something else!")
+        exec(Path('./Diceroller.py').open('r').read())
