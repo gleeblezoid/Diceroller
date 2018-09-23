@@ -12,6 +12,7 @@ print("3: Roll single D20")
 print("4: Standard polyhedral dice")
 print("5: Exploding polyhedral dice")
 print("6: Roll FATE dice")
+print("7: Roll a big bucket of dice!")
 print("q: Quit")
 menu_choice = input("Please enter your choice:")
 
@@ -150,3 +151,6 @@ elif menu_choice == '5':
 elif menu_choice == '6':
     pool = int(input("How many dice are you rolling?"))
     exec(Path('./FateRoller.py').open('r').read())
+
+elif menu_choice == '7':
+    exec(Path('./BucketOfDice.py').open('r').read())
