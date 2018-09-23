@@ -5,6 +5,4 @@ To use the application download all the files into a single directory and run th
  Future plans/patch notes 
 ############################
 
-- Currently only allows a single type of polyhedral in a given pool; I can probably use "for" loops to do this
-- Do not yet have a means of defining non-numeric dice (EoE)
 - No logging function yet
