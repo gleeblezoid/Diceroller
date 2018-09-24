@@ -14,7 +14,7 @@ print("5: Exploding polyhedral dice")
 print("6: Roll FATE dice")
 print("7: Roll a big bucket of dice!")
 print("q: Quit")
-menu_choice = input("Please enter your choice:")
+menu_choice = input("Please enter your choice: ")
 
 if menu_choice == "q":
     exit(0)
@@ -66,19 +66,19 @@ elif menu_choice == '2':
     # Import dictionary for rpgsystems
     exec(Path('./RPGDictionary.py').open('r').read())
     try:
-        mode = int(input("Enter the number for your choice:"))
+        mode = int(input("Enter the number for your choice: "))
     except(ValueError, NameError):
         print("Nope - try something else\n")
         exec(Path('./Diceroller.py').open('r').read())
 
     # Add an RPG System
     if mode == 1:
-        rpgsystem = input("What RPG system are you using?")
-        rpgshortcode = input("What shortcode do you want to use for this RPG system?")
+        rpgsystem = input("What RPG system are you using? ")
+        rpgshortcode = input("What shortcode do you want to use for this RPG system? ")
 
         while True:
             try:
-                sides = int(input("How many sides do your dice have?"))
+                sides = int(input("How many sides do your dice have? "))
                 if sides <= 1:
                     raise ValueError
                 break
@@ -86,7 +86,7 @@ elif menu_choice == '2':
                 print("Nope - try something else \n")
         while True:
             try:
-                explode = input("Do your dice explode? Type either Y or N:")
+                explode = input("Do your dice explode? Type either Y or N: ")
                 if str.upper(explode) == "Y":
                     break
                 elif str.upper(explode) == "N":
@@ -115,7 +115,7 @@ elif menu_choice == '2':
 
         rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
         print(rpgnames)
-        menu_choice = input("Which RPG system would you like to remove?")
+        menu_choice = input("Which RPG system would you like to remove? ")
         if menu_choice in rpgsystems:
             del rpgsystems[menu_choice]
             dictionary = "rpgsystems =" + str(rpgsystems)
@@ -137,19 +137,19 @@ elif menu_choice == '3':
         exec(Path('./PolyhedralRoller.py').open('r').read())
 
 elif menu_choice == '4':
-    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die)")
+    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
     pool = int(dice[:dice.find('d')])
     sides = int(dice[dice.find('d') + 1:])
     exec(Path('./PolyhedralRoller.py').open('r').read())
 
 elif menu_choice == '5':
-    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die)")
+    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
     pool = int(dice[:dice.find('d')])
     sides = int(dice[dice.find('d') + 1:])
     exec(Path('./ExplodingDice.py').open('r').read())
 
 elif menu_choice == '6':
-    pool = int(input("How many dice are you rolling?"))
+    pool = int(input("How many dice are you rolling? "))
     exec(Path('./FateRoller.py').open('r').read())
 
 elif menu_choice == '7':

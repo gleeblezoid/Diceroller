@@ -24,7 +24,7 @@ while str.upper(rollagain)=="Y":
                 print("[-]",end=",")
             else:
                 print("[ ]",end=",")
-        rollagain=input("Do you want to roll the same again? Enter Y or N:")
+        rollagain=input("Do you want to roll the same again? Enter Y or N: ")
             if str.upper(rollagain)=="Y"
                 pool=input("How many dice do you want to roll")
     except (NameError, TypeError, ValueError):
