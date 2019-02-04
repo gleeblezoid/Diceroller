@@ -2,8 +2,9 @@
 # Roller for FATE dice #
 ########################
 
-    import random
-    from pathlib import Path
+import random
+from pathlib import Path
+
 rollagain = "Y"
 while str.upper(rollagain)=="Y":
     try:
