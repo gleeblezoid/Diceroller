@@ -71,6 +71,8 @@ dice_poolcount_list = list(dice_poolcount_set)
 
 
 def createpool():
+    global pool
+    pool = []
     pc = 0
     for i in range (0,7):
         try:
@@ -79,7 +81,6 @@ def createpool():
         except (NameError, TypeError, ValueError):
             pool.append(0)
         pc = pc + 1
-
 
 # Roll dice
 rolled_results = []
@@ -128,7 +129,6 @@ def rolldice():
     print("Darkside " + str(dark))
     print('\n')
 
-
 # Offer reroll same, new pool, or quit to menu
 def swdicemenu():
     print("Choose an option from the menu:")
@@ -136,6 +136,8 @@ def swdicemenu():
     print("2: Roll a new pool of dice")
     print("q: Quit to main menu")
     menu_choice = input("Please enter your choice: ")
+    global rolled_results
+    rolled_results = []
 
     if menu_choice == '1':
         print("\n")
@@ -146,7 +148,8 @@ def swdicemenu():
         swdicemenu()
         print("\n")
     elif menu_choice == '2':
-        pool = []
+        global pool
+        pool = [0,0,0,0,0,0,0]
         createpool()
         print("\n")
         printchoices()
@@ -168,7 +171,6 @@ try:
     printchoices()
     print('\n')
     print("Enter how many of each die you want:")
-    pool = []
     createpool()
     print('\n')
     printchoices()
@@ -177,4 +179,5 @@ try:
     swdicemenu()
 except(NameError, TypeError, ValueError):
     print("Sorry, try something else")
+    rolled_results=[]
     swdicemenu()
