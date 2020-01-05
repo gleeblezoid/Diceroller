@@ -83,8 +83,10 @@ def createpool():
         pc = pc + 1
 
 # Roll dice
-rolled_results = []
+
 def rolldice():
+    global rolled_results
+    rolled_results = []
     rpc = 0
     for i in range (0,7):
         if pool[rpc] > 0:
@@ -136,8 +138,6 @@ def swdicemenu():
     print("2: Roll a new pool of dice")
     print("q: Quit to main menu")
     menu_choice = input("Please enter your choice: ")
-    global rolled_results
-    rolled_results = []
 
     if menu_choice == '1':
         print("\n")
@@ -177,5 +177,4 @@ try:
     swdicemenu()
 except(NameError, TypeError, ValueError):
     print("Sorry, try something else")
-    rolled_results=[]
     swdicemenu()
