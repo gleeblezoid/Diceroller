@@ -148,8 +148,6 @@ def swdicemenu():
         swdicemenu()
         print("\n")
     elif menu_choice == '2':
-        global pool
-        pool = [0,0,0,0,0,0,0]
         createpool()
         print("\n")
         printchoices()
