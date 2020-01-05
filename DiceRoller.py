@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ###############################################
 # Main Dice Roller File - including main menu #
 ###############################################
@@ -158,3 +160,7 @@ elif menu_choice == '7':
 
 elif menu_choice == '8':
     exec(Path('./BucketOfDice.py').open('r').read())
+
+else:
+    print("Sorry - please try something else")
+    exec(Path('./Diceroller.py').open('r').read())

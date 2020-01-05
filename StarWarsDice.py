@@ -1,6 +1,10 @@
+#!/usr/bin/env python3
+
 #########################
 # Star Wars Dice Roller #
 #########################
+
+
 import gc
 import random
 from pathlib import Path
@@ -69,9 +73,12 @@ dice_poolcount_list = list(dice_poolcount_set)
 def createpool():
     pc = 0
     for i in range (0,7):
-        die = int(input("How many "+str(dice_name_list[pc])+" ("+str(dice_colour_list[pc])+") dice? "))
+        try:
+            die = abs(int(input("How many "+str(dice_name_list[pc])+" ("+str(dice_colour_list[pc])+") dice? ")))
+            pool.append(die)
+        except (NameError, TypeError, ValueError):
+            pool.append(0)
         pc = pc + 1
-        pool.append(die)
 
 
 # Roll dice
@@ -103,6 +110,8 @@ def rolldice():
     success_vs_failure = int(successes - failures)
     advantages_vs_threats = int(advantages - threats)
 
+    print("\n")
+
     if success_vs_failure >= 0:
         print("Success " + str(success_vs_failure))
     else:
@@ -129,27 +138,43 @@ def swdicemenu():
     menu_choice = input("Please enter your choice: ")
 
     if menu_choice == '1':
+        print("\n")
         printchoices()
+        print("\n")
         rolldice()
+        print("\n")
         swdicemenu()
+        print("\n")
     elif menu_choice == '2':
         pool = []
         createpool()
+        print("\n")
         printchoices()
+        print("\n")
         rolldice()
         swdicemenu()
+        print("\n")
     elif menu_choice == 'q':
         exec(Path('./Diceroller.py').open('r').read())
+    else:
+        print("Sorry - please try something else.")
+        print("\n")
+        swdicemenu()
 
 
-
-pool = [0,0,0,0,0,0,0]
-print("What dice do you want to roll?")
-printchoices()
-print("Enter how many of each die you want:")
-pool = []
-createpool()
-printchoices()
-print('\n')
-rolldice()
-swdicemenu()
+try:
+    pool = [0,0,0,0,0,0,0]
+    print("What dice do you want to roll?")
+    printchoices()
+    print('\n')
+    print("Enter how many of each die you want:")
+    pool = []
+    createpool()
+    print('\n')
+    printchoices()
+    print('\n')
+    rolldice()
+    swdicemenu()
+except(NameError, TypeError, ValueError):
+    print("Sorry, try something else")
+    swdicemenu()

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ####################################################
 # Roller for multiple polyhedral types in one pool #
 ####################################################

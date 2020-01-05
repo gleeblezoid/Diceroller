@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 #################################################
 # Rolls a set of custom defined polyhedral dice #
 #################################################
