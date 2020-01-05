@@ -5,3 +5,7 @@ To use the application download all the files into a single directory and run th
  Future plans/patch notes 
 ############################
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 93a4aea6530f7012f6b9298d4e1c2957bca50151
