@@ -5,4 +5,4 @@ To use the application download all the files into a single directory and run th
  Future plans/patch notes 
 ############################
 
-- No logging function yet
+
