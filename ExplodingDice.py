@@ -1,3 +1,4 @@
+# Copyright 2020 Ursula Searle
 #!/usr/bin/env python3
 
 ###################################
