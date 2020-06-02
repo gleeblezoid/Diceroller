@@ -6,34 +6,40 @@
 #################################################
 
 import random
-from pathlib import Path
+from DiceRoller import show_menu, selection
 
-rollagain = "Y"
-while str.upper(rollagain)=="Y":
-    try:
-# Error handling
-        if sides < 1:
-            print("Wow, just wow...")
-            import PolyhedralRoller
+def polyhedralroller(pool, sides):
 
-        if pool < 1:
-            print("Silly human")
-            import PolyhedralRoller
+    rollagain = "Y"
+    while str.upper(rollagain)=="Y":
+        try:
+    # Error handling
+            if sides < 1:
+                print("Wow, just wow...")
+                import PolyhedralRoller
 
-# Dice roll resolution
-        i = 0
-        while i < (pool):
-            roll = random.randint(1, sides)
-            i = i + 1
-            print(roll, end=",")
-        print("\n")
-        rollagain=input("Do you want to roll the same again? Enter Y or N: ")
-    except (NameError, TypeError, ValueError):
-        print("Sorry, try something else!")
-        exec(Path('./Diceroller.py').open('r').read())
+            if pool < 1:
+                print("Silly human")
+                import PolyhedralRoller
 
-else:
-# Go back to main menu
-    exec(Path('./Diceroller.py').open('r').read())
+    # Dice roll resolution
+            i = 0
+            while i < (pool):
+                roll = random.randint(1, sides)
+                i = i + 1
+                print(roll, end=",")
+            print("\n")
+            rollagain=input("Do you want to roll the same again? Enter Y or N: ")
+        except (NameError, TypeError, ValueError):
+            print("Sorry, try something else!")
+            show_menu()
+            menu_choice = input("Please enter your choice: ")
+            selection(menu_choice)
+
+    else:
+    # Go back to main menu
+        show_menu()
+        menu_choice = input("Please enter your choice: ")
+        selection(menu_choice)
 
 

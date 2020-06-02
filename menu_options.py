@@ -1,28 +1,11 @@
 # Copyright 2018 Ursula Searle
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 
 ###############################################
-# Main Dice Roller File - including main menu #
+# Menu options for DiceRoller                 #
 ###############################################
 
-from pathlib import Path
-
-def show_menu():
-
-    print("\nChoose your preferred option from the menu below by typing the shortcode or number for the option\n")
-
-    print("1: Use a saved RPG System")
-    print("2: Add/Remove a saved RPG System")
-    print("3: Roll single D20")
-    print("4: Standard polyhedral dice")
-    print("5: Exploding polyhedral dice")
-    print("6: Roll FATE dice")
-    print("7: Roll Star Wars Narrative Dice")
-    print("8: Roll a big bucket of dice!")
-    print("q: Quit")
-
-
-
+from DiceRoller import show_menu, selection
 
 
 def option1():
@@ -50,12 +33,16 @@ def option1():
         else:
             print("Sorry I don't have that RPG")
 
-            import DiceRoller
+            show_menu()
+            menu_choice = input("Please enter your choice: ")
+            selection(menu_choice)
 
     except (NameError, TypeError, ValueError):
 
         print("Sorry, try something else please!")
-        exec(Path('./Diceroller.py').open('r').read())
+        show_menu()
+        menu_choice = input("Please enter your choice: ")
+        selection(menu_choice)
 
 def option2():
 
@@ -76,7 +63,9 @@ def option2():
         mode = int(input("Enter the number for your choice: "))
     except(ValueError, NameError):
         print("Nope - try something else\n")
-        import DiceRoller
+        show_menu()
+        menu_choice = input("Please enter your choice: ")
+        selection(menu_choice)
 
     # Add an RPG System
     if mode == 1:
@@ -131,7 +120,9 @@ def option2():
             rpglist.close()
         else:
             print("Sorry - please try something else!")
-            import DiceRoller
+            show_menu()
+            menu_choice = input("Please enter your choice: ")
+            selection(menu_choice)
 
 # Set up while loops for rerolls
 
@@ -162,40 +153,4 @@ def option8():
     from BucketOfDice import bucketofdice
     bucketofdice()
 
-def selection(menu_choice):
-    if menu_choice == "q":
-        sys.exit()
-
-    elif menu_choice == '1':
-       option1()
-
-    elif menu_choice == '2':
-        option2()
-
-    elif menu_choice == '3':
-        option3()
-
-    elif menu_choice == '4':
-        option4()
-
-    elif menu_choice == '5':
-        option5()
-
-    elif menu_choice == '6':
-        option6()
-
-    elif menu_choice == '7':
-        option7()
-
-    elif menu_choice == '8':
-        option8()
-    else:
-        print("Sorry - please try something else")
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
-
-show_menu()
-menu_choice = input("Please enter your choice: ")
-selection(menu_choice)
 

@@ -6,39 +6,49 @@
 ###################################
 
 import random
-from pathlib import Path
+from DiceRoller import show_menu, selection
 
-rollagain = "Y"
-while str.upper(rollagain)=="Y":
-    try:
-    # Error handling
+def explodingdice():
 
-        if sides <= 1:
-            print("Nice try")
-            import ExplodingDice
+    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
+    pool = int(dice[:dice.find('d')])
+    sides = int(dice[dice.find('d') + 1:])
 
-        if pool < 1:
-            print("Silly human")
-            import ExplodingDice
+    rollagain = "Y"
+    while str.upper(rollagain)=="Y":
+        try:
+        # Error handling
 
-    # Dice roll resolution
-        i = 0
-        while i < (pool):
-            roll = random.randint(1, sides)
-            if roll < sides:
-                i = i + 1
-            elif roll == sides:
-                random.randint(1, sides)
-                i = i
-            print(roll, end=",")
-        print("\n")
-        rollagain=input("Do you want to roll the same again? Enter Y or N: ")
+            if sides <= 1:
+                print("Nice try")
+                import ExplodingDice
 
-    except (NameError, TypeError, ValueError):
+            if pool < 1:
+                print("Silly human")
+                import ExplodingDice
 
-        print("Sorry, try something else!")
-        exec(Path('./Diceroller.py').open('r').read())
-else:
-        # Go back to main menu
+        # Dice roll resolution
+            i = 0
+            while i < (pool):
+                roll = random.randint(1, sides)
+                if roll < sides:
+                    i = i + 1
+                elif roll == sides:
+                    random.randint(1, sides)
+                    i = i
+                print(roll, end=",")
+            print("\n")
+            rollagain=input("Do you want to roll the same again? Enter Y or N: ")
 
-    exec(Path('./Diceroller.py').open('r').read())
+        except (NameError, TypeError, ValueError):
+
+            print("Sorry, try something else!")
+            show_menu()
+            menu_choice = input("Please enter your choice: ")
+            selection(menu_choice)
+    else:
+            # Go back to main menu
+
+            show_menu()
+            menu_choice = input("Please enter your choice: ")
+            selection(menu_choice)

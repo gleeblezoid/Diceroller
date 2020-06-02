@@ -8,7 +8,7 @@
 
 import gc
 import random
-from pathlib import Path
+from DiceRoller import show_menu, selection
 
 # Define the dice
 class dice:
@@ -157,7 +157,9 @@ def swdicemenu():
         swdicemenu()
         print("\n")
     elif menu_choice == 'q':
-        exec(Path('./Diceroller.py').open('r').read())
+        show_menu()
+        menu_choice = input("Please enter your choice: ")
+        selection(menu_choice)
     else:
         print("Sorry - please try something else.")
         print("\n")
