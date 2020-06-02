@@ -6,7 +6,7 @@
 ####################################################
 
 import random
-from DiceRoller import show_menu, selection
+from Rollers.DiceRoller import show_menu, selection
 def bucketofdice():
     # Define multiple dice pools (make a list)
     bucket = []
@@ -59,7 +59,7 @@ def bucketofdice():
 
     rollagain=input("Do you want to roll another bucket of dice? Enter Y or N: ")
     if str.upper(rollagain)=="Y":
-        import BucketOfDice
+        pass
     else:
         show_menu()
         menu_choice = input("Please enter your choice: ")

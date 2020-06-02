@@ -6,7 +6,7 @@
 #################################################
 
 import random
-from DiceRoller import show_menu, selection
+from Rollers.DiceRoller import show_menu, selection
 
 def polyhedralroller(pool, sides):
 
@@ -16,11 +16,9 @@ def polyhedralroller(pool, sides):
     # Error handling
             if sides < 1:
                 print("Wow, just wow...")
-                import PolyhedralRoller
 
-            if pool < 1:
+    if pool < 1:
                 print("Silly human")
-                import PolyhedralRoller
 
     # Dice roll resolution
             i = 0

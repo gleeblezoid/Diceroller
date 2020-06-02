@@ -8,7 +8,7 @@
 
 import gc
 import random
-from DiceRoller import show_menu, selection
+from Rollers.DiceRoller import show_menu, selection
 
 # Define the dice
 class dice:

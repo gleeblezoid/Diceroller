@@ -1,11 +1,26 @@
 # Copyright 2018 Ursula Searle
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 
 ###############################################
-# Menu options for DiceRoller                 #
+# Main Dice Roller File - including main menu #
 ###############################################
 
-from DiceRoller import show_menu, selection
+def show_menu():
+
+    print("\nChoose your preferred option from the menu below by typing the shortcode or number for the option\n")
+
+    print("1: Use a saved RPG System")
+    print("2: Add/Remove a saved RPG System")
+    print("3: Roll single D20")
+    print("4: Standard polyhedral dice")
+    print("5: Exploding polyhedral dice")
+    print("6: Roll FATE dice")
+    print("7: Roll Star Wars Narrative Dice")
+    print("8: Roll a big bucket of dice!")
+    print("q: Quit")
+
+
+
 
 
 def option1():
@@ -18,18 +33,22 @@ def option1():
 
         rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
         print(rpgnames)
-        menu_choice = input("Please enter your choice:")
-        if menu_choice == "q":
-            from roller import main
-        elif menu_choice in rpgsystems:
-            sides = rpgsystems[menu_choice]['sides']
-            explode = rpgsystems[menu_choice]['explodes']
+        submenu_choice = input("Please enter your choice:")
+        if submenu_choice == "q":
+            show_menu()
+            menu_choice = input("Please enter your choice: ")
+            selection(menu_choice)
+        elif submenu_choice in rpgsystems:
+            sides = rpgsystems[submenu_choice]['sides']
+            explode = rpgsystems[submenu_choice]['explodes']
             pool = int(input("How many dice would you like to roll?"))
 
             if explode == 'Y':
-                import ExplodingDice
+                from Rollers import ExplodingDice
+                ExplodingDice.explodingdice(pool, sides)
             elif explode == 'N':
-                import PolyhedralRoller
+                from Rollers import PolyhedralRoller
+                PolyhedralRoller.polyhedralroller(pool, sides)
         else:
             print("Sorry I don't have that RPG")
 
@@ -100,12 +119,14 @@ def option2():
         rpgsystems[rpgshortcode]['sides'] = sides
         rpgsystems[rpgshortcode]['explodes'] = str.upper(explode)
         dictionary = "rpgsystems =" + str(rpgsystems)
-        rpglist = open(r'RPGDictionary.py', 'w+')
+        rpglist = open(r'../RPGDictionary.py', 'w+')
         rpglist.write(str(dictionary))
         rpglist.close()
 
         print("Thanks - back to the Main Menu")
-
+        show_menu()
+        menu_choice = input("Please enter your choice: ")
+        selection(menu_choice)
         # Remove an RPG system
     elif mode == 2:
 
@@ -115,7 +136,7 @@ def option2():
         if menu_choice in rpgsystems:
             del rpgsystems[menu_choice]
             dictionary = "rpgsystems =" + str(rpgsystems)
-            rpglist = open(r'RPGDictionary.py', 'w+')
+            rpglist = open(r'../RPGDictionary.py', 'w+')
             rpglist.write(str(dictionary))
             rpglist.close()
         else:
@@ -127,30 +148,66 @@ def option2():
 # Set up while loops for rerolls
 
 def option3():
-        from PolyhedralRoller import polyhedralroller
-        polyhedralroller(1,20)
+        from Rollers import PolyhedralRoller
+        PolyhedralRoller.polyhedralroller(1, 20)
 
 def option4():
     dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
-    from PolyhedralRoller import polyhedralroller
+    from Rollers import PolyhedralRoller
     pool = int(dice[:dice.find('d')])
     sides = int(dice[dice.find('d') + 1:])
-    polyhedralroller(pool,sides)
+    PolyhedralRoller.polyhedralroller(pool, sides)
 
 def option5():
-    from ExplodingDice import explodingdice
-    explodingdice()
+    from Rollers import ExplodingDice
+    ExplodingDice.explodingdice()
 
 def option6():
 
-    from FateRoller import fateroller
-    fateroller()
+    from Rollers import FateRoller
+    FateRoller.fateroller()
 
 def option7():
-    import StarWarsDice
+    pass
 
 def option8():
-    from BucketOfDice import bucketofdice
-    bucketofdice()
+    from Rollers import BucketOfDice
+    BucketOfDice.bucketofdice()
 
+def selection(menu_choice):
+    if menu_choice == "q":
+        sys.exit()
+
+    elif menu_choice == '1':
+       option1()
+
+    elif menu_choice == '2':
+        option2()
+
+    elif menu_choice == '3':
+        option3()
+
+    elif menu_choice == '4':
+        option4()
+
+    elif menu_choice == '5':
+        option5()
+
+    elif menu_choice == '6':
+        option6()
+
+    elif menu_choice == '7':
+        option7()
+
+    elif menu_choice == '8':
+        option8()
+    else:
+        print("Sorry - please try something else")
+        show_menu()
+        menu_choice = input("Please enter your choice: ")
+        selection(menu_choice)
+
+show_menu()
+menu_choice = input("Please enter your choice: ")
+selection(menu_choice)
 

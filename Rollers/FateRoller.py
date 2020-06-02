@@ -6,7 +6,7 @@
 ########################
 
 import random
-from DiceRoller import show_menu, selection
+from Rollers.DiceRoller import show_menu, selection
 def fateroller():
     pool = int(input("How many dice are you rolling? "))
     rollagain = "Y"
@@ -16,7 +16,6 @@ def fateroller():
 
             if pool < 1:
                 print("Silly human")
-                import FateRoller
 
             # Dice roll resolution
             i = 0

@@ -6,13 +6,10 @@
 ###################################
 
 import random
-from DiceRoller import show_menu, selection
+from Rollers.DiceRoller import show_menu, selection
 
-def explodingdice():
+def explodingdice(pool,sides):
 
-    dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
-    pool = int(dice[:dice.find('d')])
-    sides = int(dice[dice.find('d') + 1:])
 
     rollagain = "Y"
     while str.upper(rollagain)=="Y":
@@ -21,11 +18,9 @@ def explodingdice():
 
             if sides <= 1:
                 print("Nice try")
-                import ExplodingDice
 
-            if pool < 1:
+        if pool < 1:
                 print("Silly human")
-                import ExplodingDice
 
         # Dice roll resolution
             i = 0
