@@ -1,7 +1,7 @@
 Copyright 2018 Ursula Searle
 
 # Diceroller
-To run the Diceroller application on MacOS or Windows you can download the executables from the page here.
+To run the Diceroller application on MacOS or Windows you can download the executables from the top directory.
 
 On a Mac you'll need to allow the file to run via the Privacy/Security menu in System Preferences when you first download it.
 
