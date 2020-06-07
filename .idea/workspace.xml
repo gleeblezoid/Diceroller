@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b72eb57c-17db-4c7a-bfba-46e54879edd0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rollers/StarWarsDice.py" beforeDir="false" afterPath="$PROJECT_DIR$/Rollers/StarWarsDice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RPGDiceRoller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/RPGDiceRoller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/Analysis-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/EXE-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/PKG-00.pkg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/PKG-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/PYZ-00.pyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/PYZ-00.toc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/base_library.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/warn-RPGDiceRoller.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/warn-RPGDiceRoller.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/build/RPGDiceRoller/xref-RPGDiceRoller.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/build/RPGDiceRoller/xref-RPGDiceRoller.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RPGDiceRoller-MacOS" beforeDir="false" afterPath="$PROJECT_DIR$/RPGDiceRoller-MacOS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setup.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +183,7 @@
       <workItem from="1591214554722" duration="94000" />
       <workItem from="1591214727363" duration="1326000" />
       <workItem from="1591286504371" duration="8992000" />
-      <workItem from="1591546088372" duration="601000" />
+      <workItem from="1591546088372" duration="802000" />
     </task>
     <servers />
   </component>
