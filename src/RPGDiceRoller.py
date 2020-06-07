@@ -1,5 +1,193 @@
 # Copyright 2018 Ursula Searle
-#!/usr/bin/env python3
+# !/usr/bin/env python3
+
+import sys
+import gc
+import random
+
+#########################
+# Star Wars Dice Roller #
+#########################
+
+
+
+
+
+# Define the dice
+class dice:
+    def __init__(self, colour, name, sides, results, swpoolcount):
+        self.colour = colour
+        self.name = name
+        self.sides = sides
+        self.results = results
+        self.swpoolcount = swpoolcount
+
+global dice_name_list
+global dice_colour_list
+global dice_sides_list
+global dice_results_list
+global dice_swpoolcount_list
+dice_name_list = []
+dice_colour_list = []
+dice_sides_list = []
+dice_results_list = []
+dice_swpoolcount_list = []
+
+# Green (Ability) - d8 [s,a,sa,ss,a,s,aa,' ']
+ability = dice('green', 'ability', 8, ['s', 'a', 'sa', 'ss', 'a', 's', 'aa', ' '], 0)
+# Yellow (Proficiency) - d12 [aa,a,aa,ts,s,sa,s,sa,ss,sa,ss,' ']
+proficiency = dice('yellow', 'proficiency', 12,
+                   ['aa', 'a', 'aa', 'Ts', 's', 'sa', 's', 'sa', 'ss', 'sa', 'ss', ' '], 1)
+# Purple (Difficulty) - d8 [t,f,ft,t,' ',tt,ff,t]
+difficulty = dice('purple', 'difficulty', 8, ['t', 'f', 'ft', 't', ' ', 'tt', 'ff', 't'], 2)
+# Red (Challenge) - d12 [tt,t,tt,t,ft,f,ft,f,ff,df,ff,' ']
+challenge = dice('red', 'challenge', 12, ['tt', 't', 'tt', 't', 'ft', 'f', 'ft', 'f', 'ff', 'Df', 'ff', ' '], 3)
+# Blue (Boost) - d6 [sa,aa,,s,a,' ',' ']
+boost = dice('blue', 'boost', 6, ['sa', 'aa', 's', 'a', ' ', ' '], 4)
+# Black (Setback) - d6 [' ',' ',t,t,f,f]
+setback = dice('black', 'setback', 6, [' ', ' ', 't', 't', 'f', 'f'], 5)
+# White (Force) - d12 [d,d,d,d,d,d,ll,ll,ll,l,l,dd]
+force = dice('white', 'force', 12, ['d', 'd', 'd', 'd', 'd', 'd', 'll', 'll', 'll', 'l', 'l', 'dd'], 6)
+
+dice_name_set = set(dice_name_list)
+dice_name_list = list(dice_name_set)
+dice_colour_set = set(dice_colour_list)
+dice_colour_list = list(dice_colour_set)
+dice_sides_set = set(dice_sides_list)
+dice_sides_list = list(dice_sides_set)
+dice_results_set = set(dice_results_list)
+dice_results_list = list(dice_results_set)
+dice_swpoolcount_set = set(dice_swpoolcount_list)
+dice_swpoolcount_list = list(dice_swpoolcount_set)
+
+
+def printchoices():
+    for obj in gc.get_objects():
+        if isinstance(obj, dice):
+            print(obj.name + " (" + obj.colour + "): " + str(swpool[obj.swpoolcount]))
+            dice_name_list.append(obj.name)
+            dice_colour_list.append(obj.colour)
+            dice_sides_list.append(obj.sides)
+            dice_results_list.append(obj.results)
+            dice_swpoolcount_list.append(obj.swpoolcount)
+
+
+# Create swPool: Ask about which dice are being rolled by colour
+
+
+def createswpool():
+    global swpool
+    swpool = []
+    pc = 0
+    for i in range(0, 7):
+        try:
+            die = abs(int(input("How many " + str(dice_name_list[pc]) + " (" + str(dice_colour_list[pc]) + ") dice? ")))
+            swpool.append(die)
+        except (NameError, TypeError, ValueError):
+            swpool.append(0)
+        pc = pc + 1
+
+
+# Roll dice
+
+def rolldice():
+    global rolled_results
+    rolled_results = []
+    rpc = 0
+    for i in range(0, 7):
+        if swpool[rpc] > 0:
+            for p in range(0, swpool[rpc]):
+                roll = random.randint(0, int(dice_sides_list[rpc]) - 1)
+                die_face = dice_results_list[rpc][roll]
+                rolled_results.append(die_face)
+        else:
+            rolled_results.append(" ")
+        rpc = rpc + 1
+
+    # Consolidate the success/failure, advantage/disadvantage, triumph/despair
+
+    final_result = str(rolled_results)
+    successes = final_result.count('s')
+    failures = final_result.count('f')
+    advantages = final_result.count('a')
+    threats = final_result.count('t')
+    triumphs = final_result.count('T')
+    despairs = final_result.count('D')
+    light = final_result.count('l')
+    dark = final_result.count('d')
+
+    success_vs_failure = int(successes - failures)
+    advantages_vs_threats = int(advantages - threats)
+
+    print("\n")
+
+    if success_vs_failure >= 0:
+        print("Success " + str(success_vs_failure))
+    else:
+        print("Failure " + str(abs(success_vs_failure)))
+
+    if advantages_vs_threats >= 0:
+        print("Advantage " + str(advantages_vs_threats))
+    else:
+        print("Threat " + str(abs(advantages_vs_threats)))
+
+    print("Triumphs " + str(triumphs))
+    print("Despair " + str(despairs))
+    print("Lightside " + str(light))
+    print("Darkside " + str(dark))
+    print('\n')
+
+
+# Offer reroll same, new swpool, or quit to menu
+def swdicemenu():
+    print("Choose an option from the menu:")
+    print("1: Reroll the same dice pool")
+    print("2: Roll a new pool of dice")
+    print("q: Quit to main menu")
+    swubmenu_choice = input("Please enter your choice: ")
+
+    if swubmenu_choice == '1':
+        print("\n")
+        printchoices()
+        print("\n")
+        rolldice()
+        print("\n")
+        swdicemenu()
+        print("\n")
+    elif swubmenu_choice == '2':
+        createswpool()
+        print("\n")
+        printchoices()
+        print("\n")
+        rolldice()
+        swdicemenu()
+        print("\n")
+    elif swubmenu_choice == 'q':
+        main_menu()
+    else:
+        print("Sorry - please try something else.")
+        print("\n")
+        swdicemenu()
+
+def starwarsdice():
+    try:
+        global swpool
+        swpool = [0, 0, 0, 0, 0, 0, 0]
+        print("What dice do you want to roll?")
+        printchoices()
+        print('\n')
+        print("Enter how many of each die you want:")
+        createswpool()
+        print('\n')
+        printchoices()
+        print('\n')
+        rolldice()
+        swdicemenu()
+    except(NameError, TypeError, ValueError):
+        print("Sorry, try something else")
+        swdicemenu()
+
+
 
 ####################################################
 # Roller for multiple polyhedral types in one pool #
@@ -11,16 +199,16 @@ def bucketofdice():
     moredice = "Y"
 
     try:
-        while str.upper(moredice)=="Y":
+        while str.upper(moredice) == "Y":
             dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
             bucket.append(dice)
-            moredice=input("Do you want to add more dice to the bucket? Type Y or N: ")
+            moredice = input("Do you want to add more dice to the bucket? Type Y or N: ")
 
         else:
             explode = input("Do you want your dice to explode? Type Y or N: ")
-            if str.upper(explode)=="N":
+            if str.upper(explode) == "N":
                 for dice in bucket:
-                    print("\n"+dice)
+                    print("\n" + dice)
                     pool = int(dice[:dice.find('d')])
                     sides = int(dice[dice.find('d') + 1:])
                     i = 0
@@ -29,7 +217,7 @@ def bucketofdice():
                         i = i + 1
                         print(roll, end=",")
 
-            elif str.upper(explode)=="Y":
+            elif str.upper(explode) == "Y":
                 for dice in bucket:
                     print("\n" + dice)
                     pool = int(dice[:dice.find('d')])
@@ -49,32 +237,26 @@ def bucketofdice():
 
     except (NameError, TypeError, ValueError):
         print("Sorry, try something else!")
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        main_menu()
 
     print("\n")
 
-    rollagain=input("Do you want to roll another bucket of dice? Enter Y or N: ")
-    if str.upper(rollagain)=="Y":
+    rollagain = input("Do you want to roll another bucket of dice? Enter Y or N: ")
+    if str.upper(rollagain) == "Y":
         pass
     else:
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        main_menu()
 
 
 ###################################
 # Rolls repeatedly exploding dice #
 ###################################
 
-def explodingdice(pool,sides):
-
-
+def explodingdice(pool, sides):
     rollagain = "Y"
-    while str.upper(rollagain)=="Y":
+    while str.upper(rollagain) == "Y":
         try:
-        # Error handling
+            # Error handling
 
             if sides <= 1:
                 print("Nice try")
@@ -82,7 +264,7 @@ def explodingdice(pool,sides):
             if pool < 1:
                 print("Silly human")
 
-        # Dice roll resolution
+            # Dice roll resolution
             i = 0
             while i < (pool):
                 roll = random.randint(1, sides)
@@ -93,20 +275,16 @@ def explodingdice(pool,sides):
                     i = i
                 print(roll, end=",")
             print("\n")
-            rollagain=input("Do you want to roll the same again? Enter Y or N: ")
+            rollagain = input("Do you want to roll the same again? Enter Y or N: ")
 
         except (NameError, TypeError, ValueError):
 
             print("Sorry, try something else!")
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+            main_menu()
     else:
-            # Go back to main menu
+        # Go back to main menu
 
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+        main_menu()
 
 
 ########################
@@ -139,14 +317,10 @@ def fateroller():
 
         except (NameError, TypeError, ValueError):
 
-            print("Sorry, try something else!")
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+            main_menu()
     else:
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        main_menu()
+
 
 #################################################
 # Rolls a set of custom defined polyhedral dice #
@@ -154,226 +328,39 @@ def fateroller():
 
 
 def polyhedralroller(pool, sides):
-
     rollagain = "Y"
-    while str.upper(rollagain)=="Y":
+    while str.upper(rollagain) == "Y":
         try:
-    # Error handling
+            # Error handling
             if sides < 1:
                 print("Wow, just wow...")
 
             if pool < 1:
                 print("Silly human")
 
-    # Dice roll resolution
+            # Dice roll resolution
             i = 0
             while i < (pool):
                 roll = random.randint(1, sides)
                 i = i + 1
                 print(roll, end=",")
             print("\n")
-            rollagain=input("Do you want to roll the same again? Enter Y or N: ")
+            rollagain = input("Do you want to roll the same again? Enter Y or N: ")
         except (NameError, TypeError, ValueError):
             print("Sorry, try something else!")
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+            main_menu()
 
     else:
-    # Go back to main menu
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        # Go back to main menu
+        main_menu()
 
 
-#########################
-# Star Wars Dice Roller #
-#########################
-
-
-import gc
-import random
-
-
-def starwarsdice():
-    # Define the dice
-    class dice:
-        def __init__(self,colour,name,sides,results,poolcount):
-            self.colour = colour
-            self.name = name
-            self.sides = sides
-            self.results = results
-            self.poolcount = poolcount
-
-    pool = []
-    dice_name_list = []
-    dice_colour_list = []
-    dice_sides_list = []
-    dice_results_list = []
-    dice_poolcount_list = []
-
-    # Green (Ability) - d8 [s,a,sa,ss,a,s,aa,' ']
-    ability = dice('green','ability',8,['s','a','sa','ss','a','s','aa',' '],0)
-    # Yellow (Proficiency) - d12 [aa,a,aa,ts,s,sa,s,sa,ss,sa,ss,' ']
-    proficiency = dice('yellow','proficiency',12,['aa','a','aa','Ts','s','sa','s','sa','ss','sa','ss',' '],1)
-    # Purple (Difficulty) - d8 [t,f,ft,t,' ',tt,ff,t]
-    difficulty = dice('purple','difficulty',8,['t','f','ft','t',' ','tt','ff','t'],2)
-    # Red (Challenge) - d12 [tt,t,tt,t,ft,f,ft,f,ff,df,ff,' ']
-    challenge =  dice('red','challenge',12,['tt','t','tt','t','ft','f','ft','f','ff','Df','ff',' '],3)
-    # Blue (Boost) - d6 [sa,aa,,s,a,' ',' ']
-    boost = dice('blue','boost',6,['sa','aa','s','a',' ',' '],4)
-    # Black (Setback) - d6 [' ',' ',t,t,f,f]
-    setback = dice('black','setback',6,[' ',' ','t','t','f','f'],5)
-    # White (Force) - d12 [d,d,d,d,d,d,ll,ll,ll,l,l,dd]
-    force = dice('white','force',12,['d','d','d','d','d','d','ll','ll','ll','l','l','dd'],6)
-
-
-
-    # Print list of dice with number for each one being rolled
-
-    def printchoices():
-        for obj in gc.get_objects():
-            if isinstance(obj, dice):
-                print(obj.name + " (" + obj.colour + "): " + str(pool[obj.poolcount]))
-                dice_name_list.append(obj.name)
-                dice_colour_list.append(obj.colour)
-                dice_sides_list.append(obj.sides)
-                dice_results_list.append(obj.results)
-                dice_poolcount_list.append(obj.poolcount)
-
-    dice_name_set = set(dice_name_list)
-    dice_name_list = list(dice_name_set)
-    dice_colour_set = set(dice_colour_list)
-    dice_colour_list = list(dice_colour_set)
-    dice_sides_set = set(dice_sides_list)
-    dice_sides_list = list(dice_sides_set)
-    dice_results_set = set(dice_results_list)
-    dice_results_list = list(dice_results_set)
-    dice_poolcount_set = set(dice_poolcount_list)
-    dice_poolcount_list = list(dice_poolcount_set)
-
-
-
-    # Create Pool: Ask about which dice are being rolled by colour
-
-
-    def createpool():
-        global pool
-        pool = []
-        pc = 0
-        for i in range (0,7):
-            try:
-                die = abs(int(input("How many "+str(dice_name_list[pc])+" ("+str(dice_colour_list[pc])+") dice? ")))
-                pool.append(die)
-            except (NameError, TypeError, ValueError):
-                pool.append(0)
-            pc = pc + 1
-
-    # Roll dice
-
-    def rolldice():
-        global rolled_results
-        rolled_results = []
-        rpc = 0
-        for i in range (0,7):
-            if pool[rpc] > 0:
-                for p in range (0,pool[rpc]):
-                    roll = random.randint(0,int(dice_sides_list[rpc])-1)
-                    die_face = dice_results_list[rpc][roll]
-                    rolled_results.append(die_face)
-            else:
-                rolled_results.append(" ")
-            rpc = rpc + 1
-
-    # Consolidate the success/failure, advantage/disadvantage, triumph/despair
-
-        final_result = str(rolled_results)
-        successes = final_result.count('s')
-        failures = final_result.count('f')
-        advantages = final_result.count('a')
-        threats = final_result.count('t')
-        triumphs = final_result.count('T')
-        despairs = final_result.count('D')
-        light = final_result.count('l')
-        dark = final_result.count('d')
-
-        success_vs_failure = int(successes - failures)
-        advantages_vs_threats = int(advantages - threats)
-
-        print("\n")
-
-        if success_vs_failure >= 0:
-            print("Success " + str(success_vs_failure))
-        else:
-            print("Failure "+str(abs(success_vs_failure)))
-
-        if advantages_vs_threats >= 0:
-            print("Advantage " + str(advantages_vs_threats))
-        else:
-            print("Threat "+str(abs(advantages_vs_threats)))
-
-        print("Triumphs "+ str(triumphs))
-        print("Despair " + str(despairs))
-        print("Lightside " + str(light))
-        print("Darkside " + str(dark))
-        print('\n')
-
-    # Offer reroll same, new pool, or quit to menu
-    def swdicemenu():
-        print("Choose an option from the menu:")
-        print("1: Reroll the same dice pool")
-        print("2: Roll a new pool of dice")
-        print("q: Quit to main menu")
-        menu_choice = input("Please enter your choice: ")
-
-        if menu_choice == '1':
-            print("\n")
-            printchoices()
-            print("\n")
-            rolldice()
-            print("\n")
-            swdicemenu()
-            print("\n")
-        elif menu_choice == '2':
-            createpool()
-            print("\n")
-            printchoices()
-            print("\n")
-            rolldice()
-            swdicemenu()
-            print("\n")
-        elif menu_choice == 'q':
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
-        else:
-            print("Sorry - please try something else.")
-            print("\n")
-            swdicemenu()
-
-
-    try:
-        pool = [0,0,0,0,0,0,0]
-        print("What dice do you want to roll?")
-        printchoices()
-        print('\n')
-        print("Enter how many of each die you want:")
-        createpool()
-        print('\n')
-        printchoices()
-        print('\n')
-        rolldice()
-        swdicemenu()
-    except(NameError, TypeError, ValueError):
-        print("Sorry, try something else")
-        swdicemenu()
 
 ###############################################
 # Main Dice Roller File - including main menu #
 ###############################################
 
 def show_menu():
-
     print("\nChoose your preferred option from the menu below by typing the shortcode or number for the option\n")
 
     print("1: Use a saved RPG System")
@@ -385,9 +372,6 @@ def show_menu():
     print("7: Roll Star Wars Narrative Dice")
     print("8: Roll a big bucket of dice!")
     print("q: Quit")
-
-
-
 
 
 def option1():
@@ -402,9 +386,7 @@ def option1():
         print(rpgnames)
         submenu_choice = input("Please enter your choice:")
         if submenu_choice == "q":
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+            main_menu()
         elif submenu_choice in rpgsystems:
             sides = rpgsystems[submenu_choice]['sides']
             explode = rpgsystems[submenu_choice]['explodes']
@@ -417,19 +399,15 @@ def option1():
         else:
             print("Sorry I don't have that RPG")
 
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+            main_menu()
 
     except (NameError, TypeError, ValueError):
 
         print("Sorry, try something else please!")
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        main_menu()
+
 
 def option2():
-
     #######################################################################
     # Provides framework to create and set up a config file               #
     # Config files provide custom defined variables for the dice rollers  #
@@ -447,9 +425,7 @@ def option2():
         mode = int(input("Enter the number for your choice: "))
     except(ValueError, NameError):
         print("Nope - try something else\n")
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        main_menu()
 
     # Add an RPG System
     if mode == 1:
@@ -489,31 +465,29 @@ def option2():
         rpglist.close()
 
         print("Thanks - back to the Main Menu")
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        main_menu()
         # Remove an RPG system
     elif mode == 2:
 
         rpgnames = '\n '.join([rpgsystems[i]['name'] for i in rpgsystems])
         print(rpgnames)
-        menu_choice = input("Which RPG system would you like to remove? ")
-        if menu_choice in rpgsystems:
-            del rpgsystems[menu_choice]
+        rpgmenu_choice = input("Which RPG system would you like to remove? ")
+        if rpgmenu_choice in rpgsystems:
+            del rpgsystems[rpgmenu_choice]
             dictionary = "rpgsystems =" + str(rpgsystems)
             rpglist = open(r'../RPGDictionary.py', 'w+')
             rpglist.write(str(dictionary))
             rpglist.close()
         else:
             print("Sorry - please try something else!")
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+            main_menu()
+
 
 # Set up while loops for rerolls
 
 def option3():
-        polyhedralroller(1, 20)
+    polyhedralroller(1, 20)
+
 
 def option4():
     dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
@@ -521,27 +495,32 @@ def option4():
     sides = int(dice[dice.find('d') + 1:])
     polyhedralroller(pool, sides)
 
+
 def option5():
     dice = input("What do you want to roll? Enter in the format 1d6 (for one six-sided die) ")
     pool = int(dice[:dice.find('d')])
     sides = int(dice[dice.find('d') + 1:])
-    explodingdice(pool,sides)
+    explodingdice(pool, sides)
+
 
 def option6():
     fateroller()
 
+
 def option7():
     starwarsdice()
+
 
 def option8():
     bucketofdice()
 
+
 def selection(menu_choice):
     if menu_choice == "q":
-        sys.exit()
+        sys.exit("Roll on")
 
     elif menu_choice == '1':
-       option1()
+        option1()
 
     elif menu_choice == '2':
         option2()
@@ -565,11 +544,12 @@ def selection(menu_choice):
         option8()
     else:
         print("Sorry - please try something else")
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        main_menu()
 
-show_menu()
-menu_choice = input("Please enter your choice: ")
-selection(menu_choice)
+def main_menu():
+    show_menu()
+    menu_choice = input("Please enter your choice: ")
+    selection(menu_choice)
 
+
+main_menu()
