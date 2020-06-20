@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b72eb57c-17db-4c7a-bfba-46e54879edd0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/RPGDiceRoller-MacOS" beforeDir="false" afterPath="$PROJECT_DIR$/RPGDiceRoller-MacOS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup.py" beforeDir="false" />
-    </list>
+    <list default="true" id="b72eb57c-17db-4c7a-bfba-46e54879edd0" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,6 +181,7 @@
       <workItem from="1591214727363" duration="1326000" />
       <workItem from="1591286504371" duration="8992000" />
       <workItem from="1591546088372" duration="802000" />
+      <workItem from="1592416984086" duration="252000" />
     </task>
     <servers />
   </component>
