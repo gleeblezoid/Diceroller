@@ -23,7 +23,7 @@ setup(
     version="1.0",
     packages=find_packages(),  # list of all packages
     install_requires=install_requires,
-    python_requires=">=3.0",  # any python greater than 2.7
+    python_requires=">=3.6",  # any python greater than 2.7
     author="Urse Searle",
     keyword="dice, rpg, gaming",
     long_description=README,
