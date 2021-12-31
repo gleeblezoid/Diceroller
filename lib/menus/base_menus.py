@@ -1,11 +1,11 @@
 import sys
-import rollers.PolyhedralRoller as pr
-import rollers.ExplodingDice as ed
-import rollers.FateRoller as fr
-import rollers.BucketOfDice as bod
-import rollers.StarWarsDice as swd
-import RPG_systems.existing_system as es
-import RPG_systems.new_system as ns
+import lib.rollers.PolyhedralRoller as pr
+import lib.rollers.ExplodingDice as ed
+import lib.rollers.FateRoller as fr
+import lib.rollers.BucketOfDice as bod
+import lib.rollers.StarWarsDice as swd
+import lib.RPG_systems.existing_system as es
+import lib.RPG_systems.new_system as ns
 
 
 def show_menu():

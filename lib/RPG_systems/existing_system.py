@@ -1,6 +1,6 @@
-import menus.base_menus as m
-import rollers.PolyhedralRoller as pr
-import rollers.ExplodingDice as ed
+import lib.menus.base_menus as m
+import lib.rollers.PolyhedralRoller as pr
+import lib.rollers.ExplodingDice as ed
 
 
 def saved_system():
@@ -11,7 +11,7 @@ def saved_system():
     rollagain = "Y"
     # Set up a while loop for rolling again within an RPG system
     try:
-        from RPG_systems.RPGDictionary import rpgsystems
+        from lib.RPG_systems.RPGDictionary import rpgsystems
 
         rpgnames = "\n ".join([rpgsystems[i]["name"] for i in rpgsystems])
         print(rpgnames)

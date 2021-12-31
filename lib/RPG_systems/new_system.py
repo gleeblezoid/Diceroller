@@ -1,4 +1,4 @@
-import menus.base_menus as m
+import lib.menus.base_menus as m
 
 
 def new_system():
@@ -16,7 +16,7 @@ def new_system():
         "\n2: Remove RPG System"
     )
     # Import dictionary for rpgsystems
-    from RPG_systems.RPGDictionary import rpgsystems
+    from lib.RPG_systems.RPGDictionary import rpgsystems
 
     try:
         mode = int(input("Enter the number for your choice: "))

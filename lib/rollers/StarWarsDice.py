@@ -4,7 +4,7 @@
 
 import gc
 import random
-import menus.base_menus as m
+import lib.menus.base_menus as m
 
 # Define the dice
 class dice:
