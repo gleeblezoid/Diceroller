@@ -32,13 +32,8 @@ setup(
     keyword="dice, rpg, gaming",
     long_description=README,
     long_description_content_type="text/markdown",
-    license="BSD 2-Clause",
+    license="BSD",
     url="https://github.com/gleeblezoid/Diceroller",
     dependency_links=dependency_links,
     author_email="hello@gleeblezoid.com",
-    classifiers=[
-        "License :: OSI Approved :: BSD 2-Clause License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-    ],
 )
