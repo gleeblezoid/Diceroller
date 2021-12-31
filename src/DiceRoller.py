@@ -1,4 +1,4 @@
-import menus.base_menus as m
+import lib.menus.base_menus as m
 
 ###############################################
 # Main Dice Roller File - including main menu #
