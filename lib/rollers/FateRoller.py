@@ -1,12 +1,11 @@
-# Copyright 2018 Ursula Searle
-#!/usr/bin/env python3
-
 ########################
 # Roller for FATE dice #
 ########################
 
 import random
-from Rollers.DiceRoller import show_menu, selection
+import menus.base_menus as m
+
+
 def fateroller():
     pool = int(input("How many dice are you rolling? "))
     rollagain = "Y"
@@ -33,11 +32,6 @@ def fateroller():
 
         except (NameError, TypeError, ValueError):
 
-            print("Sorry, try something else!")
-            show_menu()
-            menu_choice = input("Please enter your choice: ")
-            selection(menu_choice)
+            m.main_menu()
     else:
-        show_menu()
-        menu_choice = input("Please enter your choice: ")
-        selection(menu_choice)
+        m.main_menu()
