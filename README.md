@@ -1,1 +1,1 @@
-A Python diceroller for many kind of RPG.
+A Python diceroller designed for tabletop roleplayers.
