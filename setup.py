@@ -18,7 +18,7 @@ install_requires = [
 dependency_links = [x.strip().replace("git+", "") for x in all_reqs if "git+" not in x]
 
 setup(
-    name="diceroller",
+    name="gleeblezoid-diceroller",
     description="A dice rolling terminal app made for RPGs",
     version="1.0.0",
     packages=find_packages(),  # list of all packages
@@ -26,7 +26,7 @@ setup(
     python_requires=">=3.0",  # any python greater than 2.7
     entry_points="""
         [console_scripts]
-        diceroller=Diceroller.__main__:main
+        gleeblezoid-diceroller=Diceroller.__main__:main
     """,
     author="Urse Searle",
     keyword="dice, rpg, gaming",
