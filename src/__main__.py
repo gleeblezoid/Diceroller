@@ -1,4 +1,4 @@
-import lib.menus.base_menus as m
+import src.lib.menus.base_menus as m
 
 
 def main():
