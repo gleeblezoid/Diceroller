@@ -1,4 +1,4 @@
-import src.lib.menus.base_menus as m
+import gleeblezoid_diceroller.lib.menus.base_menus as m
 
 
 def main():
