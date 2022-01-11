@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -7,7 +7,13 @@ setup(
     name="gleeblezoid-diceroller",
     description="A dice rolling terminal app made for RPGs",
     version="1.0",
-    packages=find_packages(),  # list of all packages
+    packages=[
+        "gleeblezoid_diceroller",
+        "gleeblezoid_diceroller.lib",
+        "gleeblezoid_diceroller.lib.menus",
+        "gleeblezoid_diceroller.lib.rollers",
+        "gleeblezoid_diceroller.lib.RPG_systems",
+    ],
     entry_points={
         "console_scripts": [
             "gleeblezoid_diceroller = gleeblezoid_diceroller.diceroller:main"
