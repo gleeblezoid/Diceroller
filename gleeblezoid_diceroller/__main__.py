@@ -1,8 +1,8 @@
-import lib.menus.base_menus as m
+import diceroller
 
 
 def main():
-    m.main_menu()
+    diceroller()
 
 
 if __name__ == "__main__":
