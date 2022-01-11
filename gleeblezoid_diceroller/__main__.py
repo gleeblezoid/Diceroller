@@ -1,9 +1,3 @@
-import diceroller
+from diceroller import main
 
-
-def main():
-    diceroller()
-
-
-if __name__ == "__main__":
-    main()
+main()

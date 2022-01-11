@@ -1,3 +1,5 @@
 import lib.menus.base_menus as m
 
-m.main_menu()
+
+def main():
+    m.main_menu()

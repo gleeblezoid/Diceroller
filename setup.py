@@ -8,6 +8,11 @@ setup(
     description="A dice rolling terminal app made for RPGs",
     version="1.0",
     packages=find_packages(),  # list of all packages
+    entry_points={
+        "console_scripts": [
+            "gleeblezoid_diceroller = gleeblezoid_diceroller.diceroller:main"
+        ]
+    },
     python_requires=">=3.6",  # any python greater than 2.7
     author="Urse Searle",
     keyword="dice, rpg, gaming",
