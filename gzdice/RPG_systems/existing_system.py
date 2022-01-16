@@ -11,7 +11,7 @@ def saved_system():
     rollagain = "Y"
     # Set up a while loop for rolling again within an RPG system
     try:
-        from RPG_systems.RPGDictionary import rpgsystems
+        from ..data.RPGDictionary import rpgsystems
 
         rpgnames = "\n ".join([rpgsystems[i]["name"] for i in rpgsystems])
         print(rpgnames)

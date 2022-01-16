@@ -16,7 +16,7 @@ def new_system():
         "\n2: Remove RPG System"
     )
     # Import dictionary for rpgsystems
-    from RPG_systems.RPGDictionary import rpgsystems
+    from ..data.RPGDictionary import rpgsystems
 
     try:
         mode = int(input("Enter the number for your choice: "))
