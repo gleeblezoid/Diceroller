@@ -6,12 +6,10 @@ certifi==2021.10.8
 charset-normalizer==2.0.10
 click==8.0.3
 colorama==0.4.4
-diceroller==1.0.0
 docutils==0.18.1
 flake8==4.0.1
 flit==3.6.0
 flit_core==3.6.0
-gzdice @ file:///Users/gleeblezoid/Diceroller
 idna==3.3
 importlib-metadata==4.10.0
 keyring==23.5.0
