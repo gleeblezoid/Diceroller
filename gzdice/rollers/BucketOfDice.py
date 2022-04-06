@@ -14,7 +14,7 @@ def bucketofdice():
     try:
         while str.upper(moredice) == "Y":
             dice = input(
-                "What do you want to roll? Enter in the format 1d6 (for one six-sided die) "
+                "What do you want to roll? e.g 1d6 (for one six-sided die) "
             )
             bucket.append(dice)
             moredice = input(

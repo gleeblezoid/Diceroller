@@ -29,7 +29,7 @@ def explodingdice(pool, sides):
                     i = i
                 print(roll, end=",")
             print("\n")
-            rollagain = input("Do you want to roll the same again? Enter Y or N: ")
+            rollagain = input("Roll the same again? Enter Y or N: ")
 
         except (NameError, TypeError, ValueError):
 

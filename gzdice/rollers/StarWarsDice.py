@@ -7,25 +7,27 @@ import random
 from ..menus import base_menus as m
 
 # Define the dice
+
+
 class dice:
-    def __init__(self, colour, name, sides, results, swpoolcount):
+    def __init__(self, colour, name, sides, results, pool):
         self.colour = colour
         self.name = name
         self.sides = sides
         self.results = results
-        self.swpoolcount = swpoolcount
+        self.pool = pool
 
 
 global dice_name_list
 global dice_colour_list
 global dice_sides_list
 global dice_results_list
-global dice_swpoolcount_list
+global dice_pool_list
 dice_name_list = []
 dice_colour_list = []
 dice_sides_list = []
 dice_results_list = []
-dice_swpoolcount_list = []
+dice_pool_list = []
 
 # Green (Ability) - d8 [s,a,sa,ss,a,s,aa,' ']
 ability = dice("green", "ability", 8, ["s", "a", "sa", "ss", "a", "s", "aa", " "], 0)
@@ -70,19 +72,19 @@ dice_sides_set = set(dice_sides_list)
 dice_sides_list = list(dice_sides_set)
 dice_results_set = set(dice_results_list)
 dice_results_list = list(dice_results_set)
-dice_swpoolcount_set = set(dice_swpoolcount_list)
-dice_swpoolcount_list = list(dice_swpoolcount_set)
+dice_pool_set = set(dice_pool_list)
+dice_pool_list = list(dice_pool_set)
 
 
 def printchoices():
     for obj in gc.get_objects():
         if isinstance(obj, dice):
-            print(obj.name + " (" + obj.colour + "): " + str(swpool[obj.swpoolcount]))
+            print(obj.name + " (" + obj.colour + "): " + str(swpool[obj.pool]))
             dice_name_list.append(obj.name)
             dice_colour_list.append(obj.colour)
             dice_sides_list.append(obj.sides)
             dice_results_list.append(obj.results)
-            dice_swpoolcount_list.append(obj.swpoolcount)
+            dice_pool_list.append(obj.pool)
 
 
 # Create swPool: Ask about which dice are being rolled by colour
