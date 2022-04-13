@@ -27,7 +27,7 @@ def new_system():
     # Add an RPG System
     if mode == 1:
         rpgsystem = input("What RPG system are you using? ")
-        rpgshortcode = input("What shortcode do you want to use for this RPG system? ")
+        rpgshortcode = input("What shortcode do you want for this system? ")
 
         while True:
             try:
@@ -50,7 +50,7 @@ def new_system():
             except ValueError:
                 print("Nope - try something else - like a Y or N \n")
 
-        # This creates a dictionary entry containing the parameters for your chosen RPG System
+        # This creates a dictionary with the parameters for your RPG System
 
         rpgsystems[rpgshortcode] = {}
         rpgsystems[rpgshortcode]["name"] = rpgshortcode + ":" + rpgsystem
