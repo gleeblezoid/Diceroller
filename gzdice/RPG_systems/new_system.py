@@ -2,10 +2,8 @@ from ..menus import base_menus as m
 
 
 def new_system():
-    #######################################################################
-    # Provides framework to create and set up a config file               #
-    # Config files provide custom defined variables for the dice rollers  #
-    #######################################################################
+    # Provides framework to create and set up a config file
+    # Config files provide custom defined variables for the dice rollers
     # What are your variables?
 
     print(

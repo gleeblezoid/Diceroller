@@ -1,10 +1,7 @@
-###################################
 # Rolls repeatedly exploding dice #
-###################################
 
 import random
 from ..menus import base_menus as m
-
 
 def explodingdice(pool, sides):
     rollagain = "Y"
@@ -37,5 +34,4 @@ def explodingdice(pool, sides):
             m.main_menu()
     else:
         # Go back to main menu
-
         m.main_menu()

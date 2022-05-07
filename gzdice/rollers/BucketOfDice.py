@@ -1,10 +1,7 @@
-####################################################
 # Roller for multiple polyhedral types in one pool #
-####################################################
 
 import random
 from ..menus import base_menus as m
-
 
 def bucketofdice():
     # Define multiple dice pools (make a list)
