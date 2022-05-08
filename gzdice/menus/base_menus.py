@@ -82,7 +82,7 @@ def option4():
             (for one six-sided die) "
     )
     pool = int(dice[: dice.find("d")])
-    sides = int(dice[dice.find("d") + 1 :])
+    sides = int(dice[dice.find("d") + 1:])
     pr.polyhedralroller(pool, sides)
 
 
@@ -92,7 +92,7 @@ def option5():
             (for one six-sided die) "
     )
     pool = int(dice[: dice.find("d")])
-    sides = int(dice[dice.find("d") + 1 :])
+    sides = int(dice[dice.find("d") + 1:])
     ed.explodingdice(pool, sides)
 
 
