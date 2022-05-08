@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 setuptools = "*"
-pre-commit = "*"
 
 [dev-packages]
 pre-commit = "*"
