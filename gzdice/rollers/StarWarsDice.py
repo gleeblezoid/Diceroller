@@ -130,7 +130,8 @@ def rolldice():
             rolled_results.append(" ")
         rpc = rpc + 1
 
-    # Consolidate the success/failure, advantage/disadvantage, triumph/despair
+    # Consolidate the success/failure, advantage/disadvantage, \
+    # triumph/despair
 
     final_result = str(rolled_results)
     successes = final_result.count("s")

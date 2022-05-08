@@ -1,6 +1,4 @@
-########################
-# Roller for FATE dice #
-########################
+# Roller for FATE dice
 
 import random
 from ..menus import base_menus as m
@@ -28,7 +26,10 @@ def fateroller():
                 else:
                     print("[ ]", end=",")
 
-            rollagain = input("Do you want to roll the same again? Enter Y or N: ")
+            rollagain = input(
+                "Do you want to roll the same again?\
+                Enter Y or N: "
+            )
 
         except (NameError, TypeError, ValueError):
 
