@@ -3,6 +3,7 @@
 import random
 from ..menus import base_menus as m
 
+
 def explodingdice(pool, sides):
     rollagain = "Y"
     while str.upper(rollagain) == "Y":
