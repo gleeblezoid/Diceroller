@@ -30,7 +30,8 @@ dice_results_list = []
 dice_pool_list = []
 
 # Green (Ability) - d8 [s,a,sa,ss,a,s,aa,' ']
-ability = dice("green", "ability", 8, ["s", "a", "sa", "ss", "a", "s", "aa", " "], 0)
+ability = dice("green", "ability", 8,
+               ["s", "a", "sa", "ss", "a", "s", "aa", " "], 0)
 # Yellow (Proficiency) - d12 [aa,a,aa,ts,s,sa,s,sa,ss,sa,ss,' ']
 proficiency = dice(
     "yellow",
