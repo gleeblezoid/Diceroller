@@ -6,10 +6,12 @@ name = "pypi"
 [packages]
 setuptools = "*"
 
+
 [dev-packages]
 pre-commit = "*"
 black = "*"
 flake8 = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.10"
