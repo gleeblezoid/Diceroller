@@ -30,7 +30,7 @@ def bucketofdice():
                 for dice in bucket:
                     print("\n" + dice)
                     pool = int(dice[: dice.find("d")])
-                    sides = int(dice[dice.find("d") + 1:])
+                    sides = int(dice[dice.find("d") + 1 :])
                     i = 0
                     while i < (pool):
                         roll = random.randint(1, sides)
@@ -41,7 +41,7 @@ def bucketofdice():
                 for dice in bucket:
                     print("\n" + dice)
                     pool = int(dice[: dice.find("d")])
-                    sides = int(dice[dice.find("d") + 1:])
+                    sides = int(dice[dice.find("d") + 1 :])
                     if sides <= 1:
                         raise ValueError
                     else:
