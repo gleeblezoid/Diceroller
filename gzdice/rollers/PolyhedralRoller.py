@@ -1,6 +1,4 @@
-#################################################
-# Rolls a set of custom defined polyhedral dice #
-#################################################
+# Rolls a set of custom defined polyhedral dice
 
 import random
 from ..menus import base_menus as m
@@ -24,7 +22,10 @@ def polyhedralroller(pool, sides):
                 i = i + 1
                 print(roll, end=",")
             print("\n")
-            rollagain = input("Do you want to roll the same again? Enter Y or N: ")
+            rollagain = input(
+                "Do you want to roll the same again?\
+                Enter Y or N: "
+            )
         except (NameError, TypeError, ValueError):
             print("Sorry, try something else!")
             m.main_menu()

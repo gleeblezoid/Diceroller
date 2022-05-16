@@ -1,4 +1,5 @@
-"""A Python diceroller designed for tabletop roleplayers and running in terminal to make you feel like a wizard."""
+"""A Python diceroller designed for tabletop roleplayers and \
+    running in terminal to make you feel like a wizard."""
 
 __version__ = "0.1.2"
 

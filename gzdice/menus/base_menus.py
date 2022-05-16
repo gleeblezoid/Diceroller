@@ -11,7 +11,8 @@ from ..RPG_systems import new_system as ns
 
 def show_menu():
     print(
-        "\nChoose your preferred option from the menu below by typing the shortcode or number for the option\n"
+        "\nChoose your preferred option from the menu below by typing \
+            the shortcode or number for the option\n"
     )
 
     print("1: Use a saved RPG System")
@@ -77,7 +78,8 @@ def option3():
 
 def option4():
     dice = input(
-        "What do you want to roll? Enter in the format 1d6 (for one six-sided die) "
+        "What do you want to roll? Enter in the format 1d6 \
+            (for one six-sided die) "
     )
     pool = int(dice[: dice.find("d")])
     sides = int(dice[dice.find("d") + 1 :])
@@ -86,7 +88,8 @@ def option4():
 
 def option5():
     dice = input(
-        "What do you want to roll? Enter in the format 1d6 (for one six-sided die) "
+        "What do you want to roll? Enter in the format 1d6 \
+            (for one six-sided die) "
     )
     pool = int(dice[: dice.find("d")])
     sides = int(dice[dice.find("d") + 1 :])

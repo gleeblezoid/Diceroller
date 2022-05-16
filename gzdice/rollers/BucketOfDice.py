@@ -1,6 +1,4 @@
-####################################################
-# Roller for multiple polyhedral types in one pool #
-####################################################
+# Roller for multiple polyhedral types in one pool
 
 import random
 from ..menus import base_menus as m
@@ -14,15 +12,20 @@ def bucketofdice():
     try:
         while str.upper(moredice) == "Y":
             dice = input(
-                "What do you want to roll? Enter in the format 1d6 (for one six-sided die) "
+                "What do you want to roll? e.g 1d6 \
+                (for one six-sided die) "
             )
             bucket.append(dice)
             moredice = input(
-                "Do you want to add more dice to the bucket? Type Y or N: "
+                "Do you want to add more dice to the bucket? \
+                    Type Y or N: "
             )
 
         else:
-            explode = input("Do you want your dice to explode? Type Y or N: ")
+            explode = input(
+                "Do you want your dice to explode? \
+                Type Y or N: "
+            )
             if str.upper(explode) == "N":
                 for dice in bucket:
                     print("\n" + dice)
@@ -58,7 +61,10 @@ def bucketofdice():
 
     print("\n")
 
-    rollagain = input("Do you want to roll another bucket of dice? Enter Y or N: ")
+    rollagain = input(
+        "Do you want to roll another bucket of dice?\
+        Enter Y or N: "
+    )
     if str.upper(rollagain) == "Y":
         pass
     else:

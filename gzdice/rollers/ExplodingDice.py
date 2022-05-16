@@ -1,6 +1,4 @@
-###################################
 # Rolls repeatedly exploding dice #
-###################################
 
 import random
 from ..menus import base_menus as m
@@ -29,7 +27,7 @@ def explodingdice(pool, sides):
                     i = i
                 print(roll, end=",")
             print("\n")
-            rollagain = input("Do you want to roll the same again? Enter Y or N: ")
+            rollagain = input("Roll the same again? Enter Y or N: ")
 
         except (NameError, TypeError, ValueError):
 
@@ -37,5 +35,4 @@ def explodingdice(pool, sides):
             m.main_menu()
     else:
         # Go back to main menu
-
         m.main_menu()

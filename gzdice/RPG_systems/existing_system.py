@@ -4,11 +4,8 @@ from ..rollers import ExplodingDice as ed
 
 
 def saved_system():
-    print(
-        "Welcome to the RPG menu: Choose your preferred option by typing the shortcode or number"
-    )
+    print("Welcome to the RPG menu: Choose by typing the shortcode or number")
     print("q: Return to main menu")
-    rollagain = "Y"
     # Set up a while loop for rolling again within an RPG system
     try:
         from ..data.RPGDictionary import rpgsystems
