@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 setuptools = "*"
-
+pytest-cov = "*"
 
 [dev-packages]
 pre-commit = "*"

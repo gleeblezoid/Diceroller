@@ -1,5 +1,5 @@
 #########################
-# Star Wars Dice Roller #
+# Genesys Dice Roller #
 #########################
 
 import gc
@@ -79,7 +79,7 @@ dice_pool_list = list(dice_pool_set)
 def printchoices():
     for obj in gc.get_objects():
         if isinstance(obj, dice):
-            print(obj.name + " (" + obj.colour + "): " + str(swpool[obj.pool]))
+            print(obj.name + " (" + obj.colour + "): " + str(gspool[obj.pool]))
             dice_name_list.append(obj.name)
             dice_colour_list.append(obj.colour)
             dice_sides_list.append(obj.sides)
@@ -87,12 +87,12 @@ def printchoices():
             dice_pool_list.append(obj.pool)
 
 
-# Create swPool: Ask about which dice are being rolled by colour
+# Create gsPool: Ask about which dice are being rolled by colour
 
 
-def createswpool():
-    global swpool
-    swpool = []
+def creategspool():
+    global gspool
+    gspool = []
     pc = 0
     for i in range(0, 7):
         try:
@@ -107,9 +107,9 @@ def createswpool():
                     )
                 )
             )
-            swpool.append(die)
+            gspool.append(die)
         except (NameError, TypeError, ValueError):
-            swpool.append(0)
+            gspool.append(0)
         pc = pc + 1
 
 
@@ -121,8 +121,8 @@ def rolldice():
     rolled_results = []
     rpc = 0
     for i in range(0, 7):
-        if swpool[rpc] > 0:
-            for p in range(0, swpool[rpc]):
+        if gspool[rpc] > 0:
+            for p in range(0, gspool[rpc]):
                 roll = random.randint(0, int(dice_sides_list[rpc]) - 1)
                 die_face = dice_results_list[rpc][roll]
                 rolled_results.append(die_face)
@@ -165,52 +165,52 @@ def rolldice():
     print("\n")
 
 
-# Offer reroll same, new swpool, or quit to menu
-def swdicemenu():
+# Offer reroll same, new gspool, or quit to menu
+def gsdicemenu():
     print("Choose an option from the menu:")
     print("1: Reroll the same dice pool")
     print("2: Roll a new pool of dice")
     print("q: Quit to main menu")
-    swubmenu_choice = input("Please enter your choice: ")
+    gsubmenu_choice = input("Please enter your choice: ")
 
-    if swubmenu_choice == "1":
+    if gsubmenu_choice == "1":
         print("\n")
         printchoices()
         print("\n")
         rolldice()
         print("\n")
-        swdicemenu()
+        gsdicemenu()
         print("\n")
-    elif swubmenu_choice == "2":
-        createswpool()
+    elif gsubmenu_choice == "2":
+        creategspool()
         print("\n")
         printchoices()
         print("\n")
         rolldice()
-        swdicemenu()
+        gsdicemenu()
         print("\n")
-    elif swubmenu_choice == "q":
+    elif gsubmenu_choice == "q":
         m.main_menu()
     else:
         print("Sorry - please try something else.")
         print("\n")
-        swdicemenu()
+        gsdicemenu()
 
 
-def starwarsdice():
+def genesysdice():
     try:
-        global swpool
-        swpool = [0, 0, 0, 0, 0, 0, 0]
+        global gspool
+        gspool = [0, 0, 0, 0, 0, 0, 0]
         print("What dice do you want to roll?")
         printchoices()
         print("\n")
         print("Enter how many of each die you want:")
-        createswpool()
+        creategspool()
         print("\n")
         printchoices()
         print("\n")
         rolldice()
-        swdicemenu()
+        gsdicemenu()
     except (NameError, TypeError, ValueError):
         print("Sorry, try something else")
-        swdicemenu()
+        gsdicemenu()
