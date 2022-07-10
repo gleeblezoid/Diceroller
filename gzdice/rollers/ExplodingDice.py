@@ -1,38 +1,45 @@
 # Rolls repeatedly exploding dice #
 
 import random
-from ..menus import base_menus as m
+
+def exploding_dice(pool, sides):
+    result = ""
+    try:
+        # Error handling
+        if sides <= 1:
+            print("Nice try")
+        if pool < 1:
+            print("Silly human")
+        # Dice roll resolution
+        i = 0
+        while i < (pool):
+            roll = random.randint(1, sides)
+            if roll < sides:
+                i = i + 1
+            elif roll == sides:
+                random.randint(1, sides)
+                i = i
+                result += f"{roll},"
+    except (NameError, TypeError, ValueError):
+        print("Sorry, try something else!")
+        pass
+    result = result.rstrip(str[-1])
+    return result
 
 
-def explodingdice(pool, sides):
-    rollagain = "Y"
-    while str.upper(rollagain) == "Y":
-        try:
-            # Error handling
-
-            if sides <= 1:
-                print("Nice try")
-
-            if pool < 1:
-                print("Silly human")
-
-            # Dice roll resolution
-            i = 0
-            while i < (pool):
-                roll = random.randint(1, sides)
-                if roll < sides:
-                    i = i + 1
-                elif roll == sides:
-                    random.randint(1, sides)
-                    i = i
-                print(roll, end=",")
-            print("\n")
-            rollagain = input("Roll the same again? Enter Y or N: ")
-
-        except (NameError, TypeError, ValueError):
-
-            print("Sorry, try something else!")
-            m.main_menu()
+def roll_again(pool, sides):
+    rollagain = input("Roll the same again? Enter Y or N: ")
+    if rollagain == "Y":
+        return exploding_dice(pool,sides)
     else:
-        # Go back to main menu
-        m.main_menu()
+        pass
+
+def exploding_dice_roller():
+    dice = input(
+        "What do you want to roll? Enter in the format 1d6 \
+            (for one six-sided die) "
+    )
+    pool = int(dice[: dice.find("d")])
+    sides = int(dice[dice.find("d") + 1 :])
+    exploding_dice(pool,sides)
+    roll_again(pool,sides)
