@@ -1,10 +1,8 @@
 # Roller for multiple polyhedral types in one pool
 
 import random
-from ..menus import base_menus as m
 
-
-def bucketofdice():
+def bucket_of_dice():
     # Define multiple dice pools (make a list)
     bucket = []
     moredice = "Y"
@@ -26,6 +24,7 @@ def bucketofdice():
                 "Do you want your dice to explode? \
                 Type Y or N: "
             )
+            result = ""
             if str.upper(explode) == "N":
                 for dice in bucket:
                     print("\n" + dice)
@@ -35,7 +34,8 @@ def bucketofdice():
                     while i < (pool):
                         roll = random.randint(1, sides)
                         i = i + 1
-                        print(roll, end=",")
+                        result += f"{roll},"
+                    result = result.rstrip(str[-1])
 
             elif str.upper(explode) == "Y":
                 for dice in bucket:
@@ -53,19 +53,25 @@ def bucketofdice():
                             elif roll == sides:
                                 random.randint(1, sides)
                                 i = i
-                            print(roll, end=",")
+                        result += f"{roll},"
+                    result = result.rstrip(str[-1])
 
     except (NameError, TypeError, ValueError):
         print("Sorry, try something else!")
-        m.main_menu()
+        pass
+    
+    return result
 
-    print("\n")
-
+def roll_again():
     rollagain = input(
         "Do you want to roll another bucket of dice?\
         Enter Y or N: "
     )
     if str.upper(rollagain) == "Y":
-        pass
+        return bucketofdice()
     else:
-        m.main_menu()
+        pass
+
+def bucket_of_dice_roller():
+    bucket_of_dice()
+    roll_again()
