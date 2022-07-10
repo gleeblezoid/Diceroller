@@ -1,35 +1,41 @@
 # Rolls a set of custom defined polyhedral dice
 
 import random
-from ..menus import base_menus as m
 
+def polyhedral_dice(pool, sides):
+    result = ""
+    try:
+        # Error handling
+        if sides < 1:
+            print("Wow, just wow...")
+            pass
+        if pool < 1:
+            print("Silly human")
+            pass
+        # Dice roll resolution
+        i = 0
+        while i < (pool):
+            roll = random.randint(1, sides)
+            i = i + 1
+            result += f"{roll},"
+    except (NameError, TypeError, ValueError):
+        print("Sorry, try something else!")
+        pass
+    return result
 
-def polyhedralroller(pool, sides):
-    rollagain = "Y"
-    while str.upper(rollagain) == "Y":
-        try:
-            # Error handling
-            if sides < 1:
-                print("Wow, just wow...")
-
-            if pool < 1:
-                print("Silly human")
-
-            # Dice roll resolution
-            i = 0
-            while i < (pool):
-                roll = random.randint(1, sides)
-                i = i + 1
-                print(roll, end=",")
-            print("\n")
-            rollagain = input(
-                "Do you want to roll the same again?\
-                Enter Y or N: "
-            )
-        except (NameError, TypeError, ValueError):
-            print("Sorry, try something else!")
-            m.main_menu()
-
+def roll_again(pool, sides):
+    rollagain = input("Roll the same again? Enter Y or N: ")
+    if rollagain == "Y":
+        polyhedral_dice(pool,sides)
     else:
-        # Go back to main menu
-        m.main_menu()
+        pass
+
+def polyhedral_dice_roller():
+    dice = input(
+        "What do you want to roll? Enter in the format 1d6 \
+            (for one six-sided die) "
+    )
+    pool = int(dice[: dice.find("d")])
+    sides = int(dice[dice.find("d") + 1 :])
+    polyhedral_dice(pool,sides)
+    roll_again(pool,sides)

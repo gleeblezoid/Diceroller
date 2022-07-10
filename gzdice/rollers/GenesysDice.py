@@ -4,7 +4,6 @@
 
 import gc
 import random
-from ..menus import base_menus as m
 
 # Define the dice
 
@@ -76,7 +75,7 @@ dice_pool_set = set(dice_pool_list)
 dice_pool_list = list(dice_pool_set)
 
 
-def printchoices():
+def print_choices():
     for obj in gc.get_objects():
         if isinstance(obj, dice):
             print(obj.name + " (" + obj.colour + "): " + str(gspool[obj.pool]))
@@ -90,7 +89,7 @@ def printchoices():
 # Create gsPool: Ask about which dice are being rolled by colour
 
 
-def creategspool():
+def create_gs_pool():
     global gspool
     gspool = []
     pc = 0
@@ -116,9 +115,10 @@ def creategspool():
 # Roll dice
 
 
-def rolldice():
+def roll_dice():
     global rolled_results
     rolled_results = []
+    result_output = "\n"
     rpc = 0
     for i in range(0, 7):
         if gspool[rpc] > 0:
@@ -146,27 +146,23 @@ def rolldice():
     success_vs_failure = int(successes - failures)
     advantages_vs_threats = int(advantages - threats)
 
-    print("\n")
 
     if success_vs_failure >= 0:
-        print("Success " + str(success_vs_failure))
+        result_output += f"\nSuccess {str(success_vs_failure)}"
     else:
-        print("Failure " + str(abs(success_vs_failure)))
+        result_output += f"\nFailure {str(abs(success_vs_failure))}"
 
     if advantages_vs_threats >= 0:
-        print("Advantage " + str(advantages_vs_threats))
+        result_output += f"\nAdvantage {str(advantages_vs_threats)}"
     else:
-        print("Threat " + str(abs(advantages_vs_threats)))
+        result_output += f"\nThreat {str(abs(advantages_vs_threats))}"
 
-    print("Triumphs " + str(triumphs))
-    print("Despair " + str(despairs))
-    print("Lightside " + str(light))
-    print("Darkside " + str(dark))
-    print("\n")
-
+    result_output += f"\nTriumphs {str(triumphs)}\nDespair {str(despairs)}\nLightside {str(light)}\nDarkside {str(dark)}\n"
+    
+    return result_output, gs_dice_menu()
 
 # Offer reroll same, new gspool, or quit to menu
-def gsdicemenu():
+def gs_dice_menu():
     print("Choose an option from the menu:")
     print("1: Reroll the same dice pool")
     print("2: Roll a new pool of dice")
@@ -175,26 +171,26 @@ def gsdicemenu():
 
     if gsubmenu_choice == "1":
         print("\n")
-        printchoices()
+        print_choices()
         print("\n")
-        rolldice()
+        roll_dice()
         print("\n")
-        gsdicemenu()
+        gs_dice_menu()
         print("\n")
     elif gsubmenu_choice == "2":
-        creategspool()
+        create_gs_pool()
         print("\n")
-        printchoices()
+        print_choices()
         print("\n")
-        rolldice()
-        gsdicemenu()
+        roll_dice()
+        gs_dice_menu()
         print("\n")
     elif gsubmenu_choice == "q":
-        m.main_menu()
+        pass
     else:
         print("Sorry - please try something else.")
         print("\n")
-        gsdicemenu()
+        gs_dice_menu()
 
 
 def genesysdice():
@@ -202,15 +198,14 @@ def genesysdice():
         global gspool
         gspool = [0, 0, 0, 0, 0, 0, 0]
         print("What dice do you want to roll?")
-        printchoices()
+        print_choices()
         print("\n")
         print("Enter how many of each die you want:")
-        creategspool()
+        create_gs_pool()
         print("\n")
-        printchoices()
+        print_choices()
         print("\n")
-        rolldice()
-        gsdicemenu()
+        roll_dice()
     except (NameError, TypeError, ValueError):
         print("Sorry, try something else")
-        gsdicemenu()
+        gs_dice_menu()

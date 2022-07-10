@@ -8,8 +8,10 @@ def exploding_dice(pool, sides):
         # Error handling
         if sides <= 1:
             print("Nice try")
+            pass
         if pool < 1:
             print("Silly human")
+            pass
         # Dice roll resolution
         i = 0
         while i < (pool):
@@ -30,7 +32,7 @@ def exploding_dice(pool, sides):
 def roll_again(pool, sides):
     rollagain = input("Roll the same again? Enter Y or N: ")
     if rollagain == "Y":
-        return exploding_dice(pool,sides)
+        exploding_dice(pool,sides)
     else:
         pass
 

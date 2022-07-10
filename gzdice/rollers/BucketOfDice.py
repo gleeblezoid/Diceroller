@@ -68,7 +68,7 @@ def roll_again():
         Enter Y or N: "
     )
     if str.upper(rollagain) == "Y":
-        return bucket_of_dice()
+        bucket_of_dice()
     else:
         pass
 
