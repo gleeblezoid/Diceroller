@@ -146,7 +146,6 @@ def roll_dice():
     success_vs_failure = int(successes - failures)
     advantages_vs_threats = int(advantages - threats)
 
-
     if success_vs_failure >= 0:
         result_output += f"\nSuccess {str(success_vs_failure)}"
     else:
@@ -158,8 +157,9 @@ def roll_dice():
         result_output += f"\nThreat {str(abs(advantages_vs_threats))}"
 
     result_output += f"\nTriumphs {str(triumphs)}\nDespair {str(despairs)}\nLightside {str(light)}\nDarkside {str(dark)}\n"
-    
+
     return result_output, gs_dice_menu()
+
 
 # Offer reroll same, new gspool, or quit to menu
 def gs_dice_menu():

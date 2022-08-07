@@ -2,6 +2,7 @@
 
 import random
 
+
 def bucket_of_dice():
     # Define multiple dice pools (make a list)
     bucket = []
@@ -59,8 +60,9 @@ def bucket_of_dice():
     except (NameError, TypeError, ValueError):
         print("Sorry, try something else!")
         pass
-    
+
     return result
+
 
 def roll_again():
     rollagain = input(
@@ -71,6 +73,7 @@ def roll_again():
         bucket_of_dice()
     else:
         pass
+
 
 def bucket_of_dice_roller():
     bucket_of_dice()

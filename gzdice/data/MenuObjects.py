@@ -32,7 +32,7 @@ def option2():
 
 
 def option3():
-    pr.polyhedralroller(1, 20)
+    pr.polyhedral_dice(1, 20)
 
 
 def option4():
@@ -46,13 +46,8 @@ def option4():
 
 
 def option5():
-    dice = input(
-        "What do you want to roll? Enter in the format 1d6 \
-            (for one six-sided die) "
-    )
-    pool = int(dice[: dice.find("d")])
-    sides = int(dice[dice.find("d") + 1 :])
-    ed.explodingdice(pool, sides)
+
+    ed.exploding_dice_roller()
 
 
 def option6():

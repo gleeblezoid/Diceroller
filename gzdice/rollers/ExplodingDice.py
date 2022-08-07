@@ -2,6 +2,7 @@
 
 import random
 
+
 def exploding_dice(pool, sides):
     result = ""
     try:
@@ -32,9 +33,10 @@ def exploding_dice(pool, sides):
 def roll_again(pool, sides):
     rollagain = input("Roll the same again? Enter Y or N: ")
     if rollagain == "Y":
-        exploding_dice(pool,sides)
+        exploding_dice(pool, sides)
     else:
         pass
+
 
 def exploding_dice_roller():
     dice = input(
@@ -43,5 +45,5 @@ def exploding_dice_roller():
     )
     pool = int(dice[: dice.find("d")])
     sides = int(dice[dice.find("d") + 1 :])
-    exploding_dice(pool,sides)
-    roll_again(pool,sides)
+    exploding_dice(pool, sides)
+    roll_again(pool, sides)

@@ -26,12 +26,14 @@ def fate_roller():
         pass
     return result
 
+
 def roll_again():
     rollagain = input("Roll again? Enter Y or N: ")
     if rollagain == "Y":
         fate_roller()
     else:
         pass
+
 
 def fate_dice_roller():
     fate_roller()

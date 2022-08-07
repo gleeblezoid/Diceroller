@@ -2,6 +2,7 @@
 
 import random
 
+
 def polyhedral_dice(pool, sides):
     result = ""
     try:
@@ -23,12 +24,14 @@ def polyhedral_dice(pool, sides):
         pass
     return result
 
+
 def roll_again(pool, sides):
     rollagain = input("Roll the same again? Enter Y or N: ")
     if rollagain == "Y":
-        polyhedral_dice(pool,sides)
+        polyhedral_dice(pool, sides)
     else:
         pass
+
 
 def polyhedral_dice_roller():
     dice = input(
@@ -37,5 +40,5 @@ def polyhedral_dice_roller():
     )
     pool = int(dice[: dice.find("d")])
     sides = int(dice[dice.find("d") + 1 :])
-    polyhedral_dice(pool,sides)
-    roll_again(pool,sides)
+    polyhedral_dice(pool, sides)
+    roll_again(pool, sides)
