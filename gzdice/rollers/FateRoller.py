@@ -1,38 +1,40 @@
 # Roller for FATE dice
 
 import random
-from ..menus import base_menus as m
 
 
-def fateroller():
+def fate_roller():
+    result = ""
     pool = int(input("How many dice are you rolling? "))
-    rollagain = "Y"
-    while str.upper(rollagain) == "Y":
-        try:
-            sides = 6
+    try:
+        sides = 6
+        if pool < 1:
+            print("Silly human")
+            pass
+        # Dice roll resolution
+        i = 0
+        while i < (pool):
+            roll = random.randint(1, sides)
+            i = i + 1
+            if roll == (1 or 2):
+                result += "[+],"
+            elif roll == (3 or 4):
+                result += "[-],"
+            else:
+                result += "[ ],"
+    except (NameError, TypeError, ValueError):
+        pass
+    return result
 
-            if pool < 1:
-                print("Silly human")
 
-            # Dice roll resolution
-            i = 0
-            while i < (pool):
-                roll = random.randint(1, sides)
-                i = i + 1
-                if roll == (1 or 2):
-                    print("[+]", end=",")
-                elif roll == (3 or 4):
-                    print("[-]", end=",")
-                else:
-                    print("[ ]", end=",")
-
-            rollagain = input(
-                "Do you want to roll the same again?\
-                Enter Y or N: "
-            )
-
-        except (NameError, TypeError, ValueError):
-
-            m.main_menu()
+def roll_again():
+    rollagain = input("Roll again? Enter Y or N: ")
+    if rollagain == "Y":
+        fate_roller()
     else:
-        m.main_menu()
+        pass
+
+
+def fate_dice_roller():
+    fate_roller()
+    roll_again()
